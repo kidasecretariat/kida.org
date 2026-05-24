@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About KIDA | Korea Intervarsity Debate Association</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+background:#f4f8fc;
+color:#1b1b1b;
+overflow-x:hidden;
+}
+
+.navbar{
+background:rgba(255,255,255,0.96);
+backdrop-filter:blur(10px);
+box-shadow:0 2px 20px rgba(0,0,0,0.06);
+}
+
+.navbar-brand{
+font-size:2.3rem;
+font-weight:800;
+color:#d62839 !important;
+letter-spacing:1px;
+}
+
+.nav-link{
+font-weight:600;
+margin-left:20px;
+color:#16324f !important;
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#d62839 !important;
+}
+
+.hero-section{
+min-height:100vh;
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+
+background:
+linear-gradient(
+135deg,
+rgba(6,27,52,0.90),
+rgba(17,65,107,0.82)
+),
+url('img/kida-who.jpg');
+
+background-size:cover;
+background-position:center;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.15);
+}
+
+.section-padding{
+padding:120px 0;
+}
+
+.btn-kida{
+background:#d62839;
+border:none;
+padding:16px 38px;
+border-radius:999px;
+font-weight:700;
+color:white;
+text-decoration:none;
+display:inline-block;
+transition:0.3s;
+}
+
+.btn-kida:hover{
+background:#b71f2e;
+transform:translateY(-2px);
+color:white;
+}
+
+.info-card{
+background:white;
+padding:50px;
+border-radius:28px;
+height:100%;
+box-shadow:0 18px 50px rgba(0,0,0,0.08);
+transition:0.4s;
+}
+
+.info-card:hover{
+transform:translateY(-10px);
+}
+
+.timeline-card{
+background:white;
+padding:45px;
+border-radius:28px;
+box-shadow:0 18px 50px rgba(0,0,0,0.08);
+height:100%;
+border-top:6px solid #d62839;
+}
+
+.stats-section{
+background:linear-gradient(135deg,#16324f,#1f5f97);
+color:white;
+}
+
+.stat-box{
+text-align:center;
+}
+
+.footer{
+background:linear-gradient(135deg,#0f2742,#163d63);
+padding:90px 0 40px;
+color:white;
+}
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6{
+color:white !important;
+}
+
+.footer p{
+color:rgba(255,255,255,0.88) !important;
+}
+
+.footer a{
+color:white !important;
+text-decoration:none;
+opacity:0.9;
+transition:0.3s;
+}
+
+.footer a:hover{
+color:#ff7583 !important;
+opacity:1;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:991px){
+
+.navbar{
+padding:14px 18px !important;
+}
+
+.navbar-brand img{
+height:48px !important;
+}
+
+.navbar-collapse{
+background:white;
+padding:25px;
+border-radius:24px;
+margin-top:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.nav-link{
+margin-left:0;
+padding:12px 0;
+font-size:1.05rem;
+}
+
+.dropdown-menu{
+border-radius:18px !important;
+padding:12px !important;
+margin-top:10px;
+}
+
+.hero-section{
+min-height:auto;
+padding:160px 0 100px;
+text-align:center;
+}
+
+.hero-section h1{
+font-size:3.5rem !important;
+line-height:1.1 !important;
+}
+
+.hero-section p{
+font-size:1.15rem !important;
+line-height:1.8 !important;
+}
+
+.section-padding{
+padding:90px 0;
+}
+
+.section-padding img{
+height:auto !important;
+max-height:500px;
+}
+
+h1[style*="font-size:4.5rem"]{
+font-size:3rem !important;
+line-height:1.15 !important;
+}
+
+.info-card{
+padding:35px;
+}
+
+.timeline-card{
+padding:35px;
+}
+
+.stat-box{
+padding:10px 0;
+}
+
+.stat-box h1{
+font-size:3.2rem !important;
+}
+
+.footer{
+text-align:center;
+padding:70px 0 30px;
+}
+
+.footer .row{
+gap:50px;
+}
+
+.footer div[style*="display:flex"]{
+justify-content:center;
+}
+
+}
+
+@media(max-width:575px){
+
+.hero-section{
+padding:140px 0 80px;
+}
+
+.hero-section h1{
+font-size:2.7rem !important;
+}
+
+.hero-section h5{
+font-size:0.85rem;
+letter-spacing:4px !important;
+}
+
+.hero-section p{
+font-size:1rem !important;
+}
+
+.section-padding{
+padding:75px 0;
+}
+
+.resource-card,
+.info-card,
+.timeline-card{
+padding:28px !important;
+border-radius:22px !important;
+}
+
+h1[style*="font-size:4.5rem"]{
+font-size:2.3rem !important;
+}
+
+.display-2{
+font-size:2.8rem !important;
+}
+
+.btn-kida{
+width:100%;
+text-align:center;
+padding:16px 24px;
+}
+
+.footer{
+padding-left:15px;
+padding-right:15px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top py-3 px-4">
+
+<div class="container-fluid">
+
+<a class="navbar-brand d-flex align-items-center" href="index.html">
+
+<img
+src="img/kida-logo.png"
+alt="KIDA Logo"
+style="
+height:60px;
+width:auto;
+object-fit:contain;
+">
+
+</a>
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbarNav"
+aria-controls="navbarNav"
+aria-expanded="false"
+aria-label="Toggle navigation">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<div class="navbar-nav ms-auto align-items-center">
+
+<!-- HOME -->
+
+<a class="nav-link" href="index.html">
+Home
+</a>
+
+<!-- ABOUT -->
+
+<a class="nav-link" href="about.html">
+About
+</a>
+
+<!-- TOURNAMENTS -->
+
+<a class="nav-link" href="tournaments.html">
+Tournaments
+</a>
+
+<!-- RESOURCES DROPDOWN -->
+
+<div class="nav-item dropdown">
+
+<a
+class="nav-link dropdown-toggle"
+href="#"
+role="button"
+data-bs-toggle="dropdown"
+aria-expanded="false">
+
+Resources
+
+</a>
+
+<ul
+class="dropdown-menu border-0 shadow-lg p-3"
+style="
+border-radius:20px;
+min-width:260px;
+">
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="service.html">
+
+All Resources
+
+</a>
+</li>
+
+<li><hr class="dropdown-divider"></li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="constitutions.html">
+
+Constitutions
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="kcm-notes.html">
+
+KCM Minutes
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="tournament-bids.html">
+
+Tournament Bids
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="guidelines.html">
+
+Guidelines
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="achievements.html">
+
+Achievements Database
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="knc-archive.html">
+
+KNC Archive
+
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- UNIVERSITIES -->
+
+<a class="nav-link" href="team.html">
+Universities
+</a>
+
+<!-- COMMUNITY -->
+
+<a class="nav-link" href="testimonial.html">
+Community
+</a>
+
+<!-- CONTACT -->
+
+<a class="nav-link" href="contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero-section">
+
+<div class="hero-overlay"></div>
+
+<div class="container position-relative z-2 text-white">
+
+<div class="row">
+
+<div class="col-lg-8">
+
+<h5
+style="
+letter-spacing:8px;
+font-weight:700;
+color:#ff7583;
+margin-top:120px;
+margin-bottom:30px;
+text-transform:uppercase;
+">
+
+About KIDA
+
+</h5>
+
+<h1
+class="fw-bold"
+style="
+font-size:6rem;
+line-height:1.05;
+text-shadow:0 4px 20px rgba(0,0,0,0.45);
+">
+
+Building Korea’s
+Debate Community
+
+</h1>
+
+<p
+style="
+font-size:1.4rem;
+line-height:1.9;
+max-width:850px;
+margin-top:35px;
+color:white;
+">
+
+KIDA supports English-language parliamentary debate
+through tournaments, education,
+leadership, and intervarsity collaboration.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MAIN ABOUT -->
+
+<section class="section-padding bg-white">
+
+<div class="container">
+
+<div class="row align-items-center g-5">
+
+<div class="col-lg-6">
+
+<img
+src="img/kida-who.jpg"
+class="img-fluid rounded-5 shadow-lg"
+style="
+width:100%;
+height:700px;
+object-fit:cover;
+">
+
+</div>
+
+<div class="col-lg-6">
+
+<h5
+style="
+letter-spacing:6px;
+text-transform:uppercase;
+font-weight:700;
+color:#d62839;
+margin-bottom:25px;
+">
+
+Who We Are
+
+</h5>
+
+<h1
+class="fw-bold"
+style="
+font-size:4.5rem;
+line-height:1.05;
+color:#16324f;
+margin-bottom:35px;
+">
+
+Established
+In 2006
+
+</h1>
+
+<p
+style="
+font-size:1.25rem;
+line-height:2;
+color:#355070;
+margin-bottom:35px;
+font-weight:500;
+">
+
+KIDA is a representative body
+of Korean university students
+engaged in English-language parliamentary debate.
+
+</p>
+
+<p
+style="
+font-size:1.08rem;
+line-height:2;
+color:#4f6477;
+margin-bottom:45px;
+">
+
+The organization consists of Council members
+from each university’s debate society/institution
+alongside the Secretariat.
+
+KIDA provides training sessions,
+monthly Council meetings,
+semester tournaments,
+and supervision of projects conducted by societies.
+
+The KIDA Council also discusses and advances
+important issues and agendas
+for the debating community of Korea.
+
+</p>
+
+<a href="tournaments.html" class="btn-kida">
+Explore Tournaments
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="section-padding stats-section">
+
+<div class="container">
+
+<div class="row g-5">
+
+<div class="col-lg-3">
+
+<div class="stat-box">
+
+<h1 class="display-2 fw-bold">
+12
+</h1>
+
+<p class="fs-5">
+Member Societies
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="stat-box">
+
+<h1 class="display-2 fw-bold">
+100+
+</h1>
+
+<p class="fs-5">
+Student Debaters
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="stat-box">
+
+<h1 class="display-2 fw-bold">
+10+
+</h1>
+
+<p class="fs-5">
+Annual Tournaments
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="stat-box">
+
+<h1 class="display-2 fw-bold">
+2006
+</h1>
+
+<p class="fs-5">
+Founded
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VALUES -->
+
+<section class="section-padding bg-white">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h1
+class="fw-bold"
+style="
+font-size:4.5rem;
+color:#16324f;
+margin-bottom:25px;
+">
+
+What We Value
+
+</h1>
+
+<p
+style="
+font-size:1.2rem;
+color:#4f6477;
+">
+
+Debate beyond competition.
+
+</p>
+
+</div>
+
+<div class="row g-5">
+
+<div class="col-lg-4">
+
+<div class="info-card">
+
+<h2 class="mb-4">
+Public Speaking
+</h2>
+
+<p
+style="
+line-height:1.9;
+color:#4f6477;
+">
+
+Developing confidence,
+clarity,
+and persuasive communication
+through debate education.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="info-card">
+
+<h2 class="mb-4">
+Critical Thinking
+</h2>
+
+<p
+style="
+line-height:1.9;
+color:#4f6477;
+">
+
+Encouraging analytical thinking,
+argumentation,
+and intellectual engagement
+with global issues.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="info-card">
+
+<h2 class="mb-4">
+Community
+</h2>
+
+<p
+style="
+line-height:1.9;
+color:#4f6477;
+">
+
+Connecting university debaters
+through mentorship,
+competition,
+and collaboration.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="row g-5 align-items-start">
+
+<div class="col-lg-5">
+
+<h2
+style="
+font-weight:800;
+margin-bottom:25px;
+font-size:2.2rem;
+">
+
+KIDA
+
+</h2>
+
+<p
+style="
+font-size:1.1rem;
+line-height:1.9;
+max-width:500px;
+opacity:0.9;
+">
+
+Korea Intervarsity Debate Association promotes
+critical thinking, public speaking,
+and academic discourse across Korean universities.
+
+</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Navigation
+
+</h5>
+
+<div class="d-flex flex-column gap-3">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="tournaments.html">
+Tournaments
+</a>
+
+<a href="service.html">
+Resources
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Contact
+
+</h5>
+
+<p>
+South Korea
+</p>
+
+<div style="
+display:flex;
+gap:18px;
+margin-top:25px;
+">
+
+<a
+href="https://www.facebook.com/groups/295556537170672"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-facebook"></i>
+
+</a>
+
+<a
+href="https://www.instagram.com/kidasecretariat/"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-instagram"></i>
+
+</a>
+
+<a
+href="https://www.youtube.com/@channelkida"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-youtube"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<hr
+style="
+border-color:rgba(255,255,255,0.12);
+margin:60px 0 30px;
+">
+
+<div class="text-center">
+
+<p
+style="
+margin:0;
+opacity:0.75;
+font-size:0.95rem;
+">
+
+© 2026 Korea Intervarsity Debate Association (KIDA)
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script type="module" src="firebase-config.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

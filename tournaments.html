@@ -1,0 +1,1592 @@
+<<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KIDA Tournaments | Korea Intervarsity Debate Association</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+background:#f4f8fc;
+color:#1b1b1b;
+overflow-x:hidden;
+}
+
+.navbar{
+background:rgba(255,255,255,0.96);
+backdrop-filter:blur(10px);
+box-shadow:0 2px 20px rgba(0,0,0,0.06);
+}
+
+.navbar-brand{
+font-size:2.3rem;
+font-weight:800;
+color:#d62839 !important;
+letter-spacing:1px;
+}
+
+.nav-link{
+font-weight:600;
+margin-left:20px;
+color:#16324f !important;
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#d62839 !important;
+}
+
+.hero-section{
+min-height:100vh;
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+
+background:
+linear-gradient(
+135deg,
+rgba(6,27,52,0.90),
+rgba(17,65,107,0.82)
+),
+url('img/rookie.jpg');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.15);
+}
+
+.section-padding{
+padding:120px 0;
+}
+
+.btn-kida{
+background:#d62839;
+border:none;
+padding:16px 38px;
+border-radius:999px;
+font-weight:700;
+color:white;
+text-decoration:none;
+display:inline-block;
+transition:0.3s;
+}
+
+.btn-kida:hover{
+background:#b71f2e;
+transform:translateY(-2px);
+color:white;
+}
+
+.event-card{
+background:white;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 18px 50px rgba(0,0,0,0.08);
+height:100%;
+transition:0.4s;
+}
+
+.event-card:hover{
+transform:translateY(-10px);
+}
+
+.event-card img{
+height:320px;
+width:100%;
+object-fit:cover;
+}
+
+.timeline-card{
+background:white;
+padding:45px;
+border-radius:28px;
+box-shadow:0 18px 50px rgba(0,0,0,0.08);
+margin-bottom:35px;
+border-left:8px solid #d62839;
+}
+
+.footer{
+background:linear-gradient(135deg,#0f2742,#163d63);
+padding:90px 0 40px;
+color:white;
+}
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6{
+color:white !important;
+}
+
+.footer p{
+color:rgba(255,255,255,0.88) !important;
+}
+
+.footer a{
+color:white !important;
+text-decoration:none;
+opacity:0.9;
+transition:0.3s;
+}
+
+.footer a:hover{
+color:#ff7583 !important;
+opacity:1;
+}
+
+/* MOBILE RESPONSIVE FIXES */
+@media(max-width:768px){
+
+.navbar{
+padding-left:10px !important;
+padding-right:10px !important;
+}
+
+.navbar-brand img{
+height:45px !important;
+}
+
+.nav-link{
+margin-left:0;
+padding:12px 0;
+}
+
+.hero{
+min-height:auto;
+padding:140px 0 80px;
+background-attachment:scroll;
+}
+
+.hero h1{
+font-size:3rem !important;
+line-height:1.1 !important;
+}
+
+.hero p{
+font-size:1.05rem !important;
+line-height:1.8 !important;
+}
+
+.resource-card{
+padding:25px !important;
+border-radius:20px;
+}
+
+.group-title{
+font-size:1.8rem !important;
+}
+
+.resource-item{
+padding:25px;
+}
+
+.resource-title{
+font-size:1.25rem !important;
+}
+
+.btn-kida{
+width:100%;
+text-align:center;
+}
+
+/* =========================
+   CLEAN MOBILE FOOTER
+========================= */
+
+@media (max-width:768px){
+
+.footer{
+padding:55px 0 28px !important;
+text-align:left !important;
+}
+
+.footer .container{
+padding-left:24px;
+padding-right:24px;
+}
+
+.footer .row{
+gap:22px !important;
+}
+
+.footer .col-lg-5,
+.footer .col-lg-3,
+.footer .col-lg-4{
+margin-bottom:10px;
+}
+
+/* LOGO / TITLE */
+
+.footer h2{
+font-size:1.8rem !important;
+margin-bottom:14px !important;
+}
+
+/* SECTION HEADERS */
+
+.footer h5{
+font-size:1rem !important;
+margin-bottom:14px !important;
+letter-spacing:0.5px;
+}
+
+/* BODY TEXT */
+
+.footer p{
+font-size:0.95rem !important;
+line-height:1.75 !important;
+margin-bottom:0;
+}
+
+/* NAV LINKS */
+
+.footer a{
+font-size:0.95rem;
+}
+
+/* NAVIGATION STACK */
+
+.footer .d-flex.flex-column{
+gap:10px !important;
+}
+
+/* SOCIAL ICONS */
+
+.footer div[style*="display:flex"]{
+justify-content:flex-start !important;
+gap:16px !important;
+margin-top:16px !important;
+}
+
+.footer i{
+font-size:1.25rem !important;
+}
+
+/* COPYRIGHT */
+
+.footer hr{
+margin:35px 0 20px !important;
+}
+
+.footer .text-center{
+text-align:left !important;
+}
+
+.footer .text-center p{
+font-size:0.82rem !important;
+line-height:1.7 !important;
+opacity:0.7 !important;
+}
+
+}
+
+}
+
+/* =========================================
+   TOURNAMENT PAGE MOBILE FIX
+========================================= */
+
+@media (max-width: 768px){
+
+/* HERO */
+
+.hero-section{
+min-height:auto !important;
+padding:120px 0 70px !important;
+background-attachment:scroll !important;
+}
+
+.hero-section h5{
+font-size:0.85rem !important;
+letter-spacing:4px !important;
+margin-top:60px !important;
+margin-bottom:20px !important;
+}
+
+.hero-section h1{
+font-size:2.6rem !important;
+line-height:1.12 !important;
+}
+
+.hero-section p{
+font-size:1rem !important;
+line-height:1.8 !important;
+margin-top:22px !important;
+}
+
+/* GLOBAL SPACING */
+
+.section-padding{
+padding:70px 0 !important;
+}
+
+/* FEATURED EVENTS */
+
+.display-3{
+font-size:2.3rem !important;
+}
+
+#tournamentContainer{
+row-gap:22px !important;
+}
+
+.event-card{
+border-radius:22px !important;
+}
+
+.event-content{
+padding:24px !important;
+}
+
+.event-card h3{
+font-size:1.35rem !important;
+line-height:1.3 !important;
+margin-bottom:18px !important;
+}
+
+.event-card p{
+font-size:0.98rem !important;
+line-height:1.75 !important;
+margin-bottom:22px !important;
+}
+
+.btn-kida{
+width:100%;
+text-align:center;
+padding:14px 20px !important;
+font-size:0.95rem;
+}
+
+/* TIMELINE */
+
+.timeline-card{
+padding:28px !important;
+margin-bottom:20px !important;
+border-radius:22px !important;
+}
+
+.timeline-card h2{
+font-size:1.4rem !important;
+margin-bottom:12px !important;
+}
+
+.timeline-card p{
+font-size:1rem !important;
+line-height:1.7 !important;
+}
+
+/* ASIAN MAJORS */
+
+section .row.g-4{
+row-gap:20px !important;
+}
+
+section .col-lg-4 > div{
+padding:26px !important;
+border-radius:22px !important;
+}
+
+section .col-lg-4 h3{
+font-size:1.35rem !important;
+line-height:1.3 !important;
+}
+
+section .col-lg-4 p{
+font-size:0.96rem !important;
+line-height:1.75 !important;
+}
+
+section .col-lg-4 span{
+font-size:0.8rem !important;
+padding:7px 14px !important;
+}
+
+/* ASIAN MAJOR HEADER */
+
+section h2[style*="font-size:3rem"]{
+font-size:2rem !important;
+line-height:1.2 !important;
+}
+
+section h5[style*="letter-spacing:4px"]{
+font-size:0.8rem !important;
+letter-spacing:3px !important;
+}
+
+section p[style*="max-width:800px"]{
+font-size:0.98rem !important;
+line-height:1.8 !important;
+}
+
+/* FOOTER */
+
+.footer{
+padding:65px 0 30px !important;
+text-align:center;
+}
+
+.footer .row{
+gap:36px !important;
+}
+
+.footer h2{
+font-size:1.8rem !important;
+}
+
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media (max-width: 480px){
+
+.hero-section h1{
+font-size:2.2rem !important;
+}
+
+.display-3{
+font-size:2rem !important;
+}
+
+.event-content{
+padding:20px !important;
+}
+
+.timeline-card{
+padding:24px !important;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top py-3 px-4">
+
+<div class="container-fluid">
+
+<a class="navbar-brand d-flex align-items-center" href="index.html">
+
+<img
+src="img/kida-logo.png"
+alt="KIDA Logo"
+style="
+height:60px;
+width:auto;
+object-fit:contain;
+">
+
+</a>
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbarNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<div class="navbar-nav ms-auto align-items-center">
+
+<a class="nav-link" href="index.html">
+Home
+</a>
+
+<a class="nav-link" href="about.html">
+About
+</a>
+
+<a class="nav-link active" href="tournaments.html">
+Tournaments
+</a>
+
+<div class="nav-item dropdown">
+
+<a
+class="nav-link dropdown-toggle"
+href="#"
+role="button"
+data-bs-toggle="dropdown">
+
+Resources
+
+</a>
+
+<ul
+class="dropdown-menu border-0 shadow-lg p-3"
+style="
+border-radius:20px;
+min-width:260px;
+">
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="service.html">
+
+All Resources
+
+</a>
+</li>
+
+<li><hr class="dropdown-divider"></li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="constitutions.html">
+Constitutions
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="kcm-notes.html">
+KCM Minutes
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="tournament-bids.html">
+Tournament Bids
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="guidelines.html">
+Guidelines
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="achievements.html">
+Achievements Database
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="knc-archive.html">
+
+KNC Archive
+
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<a class="nav-link" href="team.html">
+Universities
+</a>
+
+<a class="nav-link" href="testimonial.html">
+Community
+</a>
+
+<a class="nav-link" href="contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero-section">
+
+<div class="hero-overlay"></div>
+
+<div class="container position-relative z-2 text-white">
+
+<div class="row">
+
+<div class="col-lg-9">
+
+<h5
+style="
+letter-spacing:8px;
+font-weight:700;
+color:#ff7583;
+margin-top:170px;
+margin-bottom:30px;
+text-transform:uppercase;
+">
+
+KIDA Competitions
+
+</h5>
+
+<h1
+class="fw-bold"
+style="
+font-size:7rem;
+line-height:1.02;
+text-shadow:0 4px 20px rgba(0,0,0,0.45);
+">
+
+Korea’s Premier
+University Debate
+Circuit
+
+</h1>
+
+<p
+style="
+font-size:1.4rem;
+line-height:1.9;
+max-width:900px;
+margin-top:35px;
+color:white;
+text-shadow:0 3px 16px rgba(0,0,0,0.55);
+">
+
+KIDA organizes major intervarsity tournaments,
+rookie competitions,
+and educational debate events
+throughout the academic year.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURED EVENTS -->
+
+<section class="section-padding bg-white">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h1 class="display-3 fw-bold" style="color:#16324f;">
+Featured Events
+</h1>
+
+<p
+class="fs-5"
+style="
+color:#4f6477;
+font-size:1.2rem;
+">
+
+National competitions, workshops,
+and educational initiatives.
+
+</p>
+
+</div>
+
+<div class="row g-5" id="tournamentContainer">
+
+<!-- Firebase tournaments load here -->
+
+</div>
+
+</div>
+
+</section>
+
+<!-- YEARLY TIMELINE -->
+
+<section
+class="section-padding"
+style="
+background:linear-gradient(135deg,#eef5fc,#f7fbff);
+">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h1
+class="fw-bold"
+style="
+font-size:4.5rem;
+color:#16324f;
+margin-bottom:25px;
+">
+
+Yearly Timeline
+
+</h1>
+
+<p
+style="
+font-size:1.2rem;
+color:#4f6477;
+">
+
+KIDA tournaments throughout the academic year.
+
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h2 class="fw-bold mb-3" style="color:#16324f;">
+April
+</h2>
+
+<p
+style="
+font-size:1.15rem;
+line-height:1.9;
+color:#4f6477;
+margin:0;
+">
+
+Spring Rookie Tournament (Asian Parliamentary)
+
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h2 class="fw-bold mb-3" style="color:#16324f;">
+May
+</h2>
+
+<p
+style="
+font-size:1.15rem;
+line-height:1.9;
+color:#4f6477;
+margin:0;
+">
+
+Spring KIDA National Championships (Asian Parliamentary)
+
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h2 class="fw-bold mb-3" style="color:#16324f;">
+August
+</h2>
+
+<p
+style="
+font-size:1.15rem;
+line-height:1.9;
+color:#4f6477;
+margin:0;
+">
+
+KIDA Open (British Parliamentary)
+
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h2 class="fw-bold mb-3" style="color:#16324f;">
+October
+</h2>
+
+<p
+style="
+font-size:1.15rem;
+line-height:1.9;
+color:#4f6477;
+margin:0;
+">
+
+Autumn Rookie Tournament (British Parliamentary)
+
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h2 class="fw-bold mb-3" style="color:#16324f;">
+November
+</h2>
+
+<p
+style="
+font-size:1.15rem;
+line-height:1.9;
+color:#4f6477;
+margin:0;
+">
+
+Autumn KIDA National Championships (British Parliamentary)
+
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h2 class="fw-bold mb-3" style="color:#16324f;">
+February
+</h2>
+
+<p
+style="
+font-size:1.15rem;
+line-height:1.9;
+color:#4f6477;
+margin:0;
+">
+
+Winter Pro-Am (British Parliamentary)
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ASIAN MAJORS -->
+
+<section class="section-padding pt-0">
+
+<div class="container">
+
+<div
+style="
+background:linear-gradient(135deg,#fff8ef,#fff3df);
+padding:50px;
+border-radius:30px;
+box-shadow:0 18px 50px rgba(0,0,0,0.06);
+border:1px solid rgba(230,145,56,0.12);
+">
+
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+
+<div>
+
+<h5
+style="
+letter-spacing:4px;
+text-transform:uppercase;
+font-weight:800;
+color:#e58e26;
+margin-bottom:15px;
+">
+
+Asian Circuit
+
+</h5>
+
+<h2
+style="
+font-size:3rem;
+font-weight:800;
+color:#7a4b00;
+margin-bottom:10px;
+">
+
+Majors Timeline
+
+</h2>
+
+<p
+style="
+font-size:1.1rem;
+color:#8b6b3f;
+max-width:800px;
+line-height:1.9;
+">
+
+Major institution-level international tournaments frequently attended by KIDA universities and Korean debaters. These are all institutional tournaments, meaning teams must be composed of members from the same university.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row g-4">
+
+<!-- UADC -->
+
+<div class="col-lg-4 col-md-6">
+
+<div
+style="
+background:white;
+padding:35px;
+border-radius:24px;
+height:100%;
+border-left:6px solid #2d98da;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+">
+
+<span
+style="
+background:#e8f4ff;
+color:#2d98da;
+padding:8px 18px;
+border-radius:999px;
+font-weight:700;
+font-size:0.9rem;
+display:inline-block;
+margin-bottom:20px;
+">
+
+June
+
+</span>
+
+<h3
+style="
+font-weight:800;
+margin-bottom:15px;
+color:#16324f;
+">
+
+UADC
+
+</h3>
+
+<p
+style="
+line-height:1.9;
+color:#5f6f80;
+">
+
+United Asian Debating Championship.
+One of Asia's largest university debate championships.
+
+<br><br>
+
+<strong>Format:</strong> UADC Asian Parliamentary
+
+</p>
+
+</div>
+
+</div>
+
+<!-- AUSTRALS -->
+
+<div class="col-lg-4 col-md-6">
+
+<div
+style="
+background:white;
+padding:35px;
+border-radius:24px;
+height:100%;
+border-left:6px solid #20bf6b;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+">
+
+<span
+style="
+background:#e9fff3;
+color:#20bf6b;
+padding:8px 18px;
+border-radius:999px;
+font-weight:700;
+font-size:0.9rem;
+display:inline-block;
+margin-bottom:20px;
+">
+
+July
+
+</span>
+
+<h3
+style="
+font-weight:800;
+margin-bottom:15px;
+color:#16324f;
+">
+
+Australs
+
+</h3>
+
+<p
+style="
+line-height:1.9;
+color:#5f6f80;
+">
+
+Australasian Intervarsity Debating Championship,
+featuring universities across Asia-Pacific.
+
+<br><br>
+
+<strong>Format:</strong> Australs 3v3
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ABP -->
+
+<div class="col-lg-4 col-md-6">
+
+<div
+style="
+background:white;
+padding:35px;
+border-radius:24px;
+height:100%;
+border-left:6px solid #8854d0;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+">
+
+<span
+style="
+background:#f3ebff;
+color:#8854d0;
+padding:8px 18px;
+border-radius:999px;
+font-weight:700;
+font-size:0.9rem;
+display:inline-block;
+margin-bottom:20px;
+">
+
+August
+
+</span>
+
+<h3
+style="
+font-weight:800;
+margin-bottom:15px;
+color:#16324f;
+">
+
+ABP
+
+</h3>
+
+<p
+style="
+line-height:1.9;
+color:#5f6f80;
+">
+
+Asian British Parliamentary Championship,
+bringing together top university debaters from across Asia.
+
+<br><br>
+
+<strong>Format:</strong> British Parliamentary
+
+</p>
+
+</div>
+
+</div>
+
+<!-- NEADC -->
+
+<div class="col-lg-4 col-md-6">
+
+<div
+style="
+background:white;
+padding:35px;
+border-radius:24px;
+height:100%;
+border-left:6px solid #e58e26;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+">
+
+<span
+style="
+background:#fff3df;
+color:#b76b00;
+padding:8px 18px;
+border-radius:999px;
+font-weight:700;
+font-size:0.9rem;
+display:inline-block;
+margin-bottom:20px;
+">
+
+November
+
+</span>
+
+<h3
+style="
+font-weight:800;
+margin-bottom:15px;
+color:#7a4b00;
+">
+
+NEADC
+
+</h3>
+
+<p
+style="
+line-height:1.9;
+color:#7c6b56;
+">
+
+North East Asian Debate Championship.
+One of the primary Asian regional BP tournaments
+attended by Korean university debaters.
+
+<br><br>
+
+<strong>Format:</strong> British Parliamentary
+
+</p>
+
+</div>
+
+</div>
+
+<!-- WUDC -->
+
+<div class="col-lg-4 col-md-6">
+
+<div
+style="
+background:white;
+padding:35px;
+border-radius:24px;
+height:100%;
+border-left:6px solid #d63031;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+">
+
+<span
+style="
+background:#ffe9ea;
+color:#d63031;
+padding:8px 18px;
+border-radius:999px;
+font-weight:700;
+font-size:0.9rem;
+display:inline-block;
+margin-bottom:20px;
+">
+
+December
+
+</span>
+
+<h3
+style="
+font-weight:800;
+margin-bottom:15px;
+color:#16324f;
+">
+
+WUDC
+
+</h3>
+
+<p
+style="
+line-height:1.9;
+color:#5f6f80;
+">
+
+World Universities Debating Championship,
+the largest and most prestigious university debate tournament globally.
+
+<br><br>
+
+<strong>Format:</strong> British Parliamentary
+
+</p>
+
+</div>
+
+</div>
+
+<!-- NOTE BOX -->
+
+<div class="col-lg-4 col-md-6">
+
+<div
+style="
+background:white;
+padding:35px;
+border-radius:24px;
+height:100%;
+border-left:6px solid #f7b731;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+">
+
+<span
+style="
+background:#fff7df;
+color:#c58b00;
+padding:8px 18px;
+border-radius:999px;
+font-weight:700;
+font-size:0.9rem;
+display:inline-block;
+margin-bottom:20px;
+">
+
+Other Tournaments
+
+</span>
+
+<h3
+style="
+font-weight:800;
+margin-bottom:15px;
+color:#16324f;
+">
+
+Open Tournaments
+
+</h3>
+
+<p
+style="
+line-height:1.85;
+color:#5f6f80;
+margin-bottom:0;
+">
+
+Open-format tournaments also exist,
+where participants may freely team across institutions
+
+<br><br>
+
+Shanghai Int. Debate Open (February) <br>
+Taiwan Int. Debate Open (March) <br>
+Malaysia Debate Open (April) <br>
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="row g-5 align-items-start">
+
+<div class="col-lg-5">
+
+<h2
+style="
+font-weight:800;
+margin-bottom:25px;
+font-size:2.2rem;
+">
+
+KIDA
+
+</h2>
+
+<p
+style="
+font-size:1.1rem;
+line-height:1.9;
+max-width:500px;
+opacity:0.9;
+">
+
+Korea Intervarsity Debate Association promotes
+critical thinking, public speaking,
+and academic discourse across Korean universities.
+
+</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Navigation
+
+</h5>
+
+<div class="d-flex flex-column gap-3">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="tournaments.html">
+Tournaments
+</a>
+
+<a href="service.html">
+Resources
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Contact
+
+</h5>
+
+<p>
+South Korea
+</p>
+
+<div style="
+display:flex;
+gap:18px;
+margin-top:25px;
+">
+
+<a
+href="https://www.facebook.com/groups/295556537170672"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-facebook"></i>
+
+</a>
+
+<a
+href="https://www.instagram.com/kidasecretariat/"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-instagram"></i>
+
+</a>
+
+<a
+href="https://www.youtube.com/@channelkida"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-youtube"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<hr
+style="
+border-color:rgba(255,255,255,0.12);
+margin:60px 0 30px;
+">
+
+<div class="text-center">
+
+<p
+style="
+margin:0;
+opacity:0.75;
+font-size:0.95rem;
+">
+
+© 2026 Korea Intervarsity Debate Association (KIDA)
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAoYu9k8QKVhTalNJgYgFwztmtKPN1mMio",
+
+authDomain: "kida-835b0.firebaseapp.com",
+
+projectId: "kida-835b0",
+
+storageBucket: "kida-835b0.firebasestorage.app",
+
+messagingSenderId: "886653080955",
+
+appId: "1:886653080955:web:2de5128e099e4afd6f99de",
+
+measurementId: "G-J020RVE5EK"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+async function loadTournaments(){
+
+const tournamentContainer =
+document.getElementById("tournamentContainer");
+
+tournamentContainer.innerHTML = "";
+
+const querySnapshot =
+await getDocs(collection(db,"tournaments"));
+
+querySnapshot.forEach((doc)=>{
+
+const tournament = doc.data();
+
+tournamentContainer.innerHTML += `
+
+<div class="col-lg-6 col-xl-3">
+
+<div class="event-card">
+
+<div class="event-content p-4">
+
+<h3
+class="mb-4 fw-bold"
+style="
+color:#16324f;
+font-size:1.8rem;
+">
+
+${tournament.title}
+
+</h3>
+
+<p
+class="mb-4"
+style="
+line-height:1.8;
+color:#4f6477;
+">
+
+${tournament.description}
+
+</p>
+
+<a
+href="${tournament.link}"
+target="_blank"
+class="btn-kida">
+
+View Details
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadTournaments();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>>

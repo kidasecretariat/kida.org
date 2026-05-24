@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KIDA | Contact</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+background:#f4f8fc;
+color:#1b1b1b;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:rgba(255,255,255,0.96);
+backdrop-filter:blur(10px);
+box-shadow:0 2px 20px rgba(0,0,0,0.06);
+padding:18px 0;
+}
+
+.navbar-brand{
+font-size:2.2rem;
+font-weight:800;
+color:#d62839 !important;
+letter-spacing:1px;
+}
+
+.nav-link{
+font-weight:600;
+margin-left:20px;
+color:#16324f !important;
+transition:0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active{
+color:#d62839 !important;
+}
+
+.dropdown-menu{
+border-radius:20px;
+min-width:260px;
+}
+
+.dropdown-item{
+transition:0.3s;
+}
+
+.dropdown-item:hover{
+background:#f4f8fc;
+color:#d62839;
+}
+
+/* HERO */
+
+.hero-section{
+height:72vh;
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+
+background:
+linear-gradient(
+135deg,
+rgba(10,32,56,0.92),
+rgba(28,78,122,0.84)
+),
+url('img/carousel-2.jpg');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.18);
+}
+
+.section-padding{
+padding:110px 0;
+}
+
+/* CONTACT */
+
+.contact-card{
+background:white;
+border-radius:28px;
+padding:50px;
+box-shadow:0 18px 50px rgba(0,0,0,0.08);
+height:100%;
+}
+
+.contact-info-box{
+background:linear-gradient(135deg,#16324f,#1f5f97);
+border-radius:28px;
+padding:50px;
+color:white;
+height:100%;
+}
+
+.form-control{
+padding:18px;
+border-radius:16px;
+border:none;
+background:#eef4fa;
+font-size:1rem;
+}
+
+.form-control:focus{
+box-shadow:none;
+background:white;
+border:2px solid #1f5f97;
+}
+
+.btn-kida{
+background:#d62839;
+border:none;
+padding:15px 38px;
+border-radius:999px;
+font-weight:700;
+color:white;
+transition:0.3s;
+}
+
+.btn-kida:hover{
+background:#b71f2e;
+transform:translateY(-2px);
+color:white;
+}
+
+.info-item{
+margin-bottom:35px;
+}
+
+.info-title{
+font-size:1.2rem;
+font-weight:700;
+margin-bottom:8px;
+}
+
+/* FOOTER */
+
+.footer{
+background:linear-gradient(135deg,#0f2742,#163d63);
+padding:90px 0 40px;
+color:white;
+}
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6{
+color:white !important;
+}
+
+.footer p{
+color:rgba(255,255,255,0.88) !important;
+}
+
+.footer a{
+color:white !important;
+text-decoration:none;
+opacity:0.9;
+transition:0.3s;
+}
+
+.footer a:hover{
+color:#ff7583 !important;
+opacity:1;
+}
+
+/* =========================
+TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 992px){
+
+.navbar{
+padding-left:18px !important;
+padding-right:18px !important;
+}
+
+.navbar-collapse{
+background:white;
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.nav-link{
+margin-left:0;
+padding:12px 0;
+}
+
+.dropdown-menu{
+margin-top:10px;
+border-radius:18px;
+}
+
+.hero-section{
+height:auto;
+min-height:auto;
+padding:150px 0 90px;
+background-attachment:scroll;
+}
+
+.hero-section h1{
+font-size:4.3rem !important;
+}
+
+.hero-section p{
+font-size:1.3rem !important;
+line-height:1.8 !important;
+}
+
+.section-padding{
+padding:80px 0;
+}
+
+.contact-card,
+.contact-info-box{
+padding:40px;
+border-radius:24px;
+}
+
+.footer{
+padding:70px 0 35px;
+}
+
+}
+
+/* =========================
+MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px){
+
+.hero-section{
+padding:130px 0 80px;
+}
+
+.hero-section h5{
+font-size:0.85rem !important;
+letter-spacing:4px !important;
+margin-bottom:18px !important;
+}
+
+.hero-section h1{
+font-size:2.9rem !important;
+line-height:1.1 !important;
+}
+
+.hero-section p{
+font-size:1.05rem !important;
+line-height:1.8 !important;
+margin-top:22px !important;
+max-width:100% !important;
+}
+
+.section-padding{
+padding:70px 0;
+}
+
+.contact-card,
+.contact-info-box{
+padding:28px 22px;
+border-radius:22px;
+}
+
+.contact-card h2,
+.contact-info-box h2{
+font-size:2rem;
+line-height:1.2;
+}
+
+.contact-card p{
+font-size:1rem !important;
+line-height:1.8 !important;
+}
+
+.form-control{
+padding:15px;
+font-size:0.95rem;
+border-radius:14px;
+}
+
+.btn-kida{
+width:100%;
+padding:15px 20px;
+font-size:1rem;
+text-align:center;
+}
+
+.info-item{
+margin-bottom:28px;
+}
+
+.info-title{
+font-size:1.05rem;
+}
+
+/* =========================
+FOOTER MOBILE FIX
+========================= */
+
+@media (max-width: 768px){
+
+.footer{
+text-align:center;
+padding:60px 0 30px;
+}
+
+.footer .row{
+justify-content:center;
+text-align:center;
+gap:40px;
+}
+
+.footer .col-lg-5,
+.footer .col-lg-3,
+.footer .col-lg-4{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.footer p{
+max-width:320px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.footer .d-flex{
+justify-content:center;
+}
+
+.footer h2{
+font-size:1.9rem !important;
+margin-bottom:18px !important;
+}
+
+.footer h5{
+margin-bottom:18px !important;
+}
+
+.footer a{
+display:inline-block;
+}
+
+}
+
+}
+
+/* =========================
+SMALL PHONE
+========================= */
+
+@media (max-width: 480px){
+
+.hero-section h1{
+font-size:2.35rem !important;
+}
+
+.hero-section p{
+font-size:0.98rem !important;
+}
+
+.contact-card h2,
+.contact-info-box h2{
+font-size:1.7rem;
+}
+
+.contact-card,
+.contact-info-box{
+padding:24px 18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top py-3 px-4">
+
+<div class="container-fluid">
+
+<a class="navbar-brand d-flex align-items-center" href="index.html">
+
+<img
+src="img/kida-logo.png"
+alt="KIDA Logo"
+style="
+height:60px;
+width:auto;
+object-fit:contain;
+">
+
+</a>
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbarNav"
+aria-controls="navbarNav"
+aria-expanded="false"
+aria-label="Toggle navigation">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<div class="navbar-nav ms-auto align-items-center">
+
+<a class="nav-link" href="index.html">
+Home
+</a>
+
+<a class="nav-link" href="about.html">
+About
+</a>
+
+<a class="nav-link" href="tournaments.html">
+Tournaments
+</a>
+
+<!-- RESOURCES -->
+
+<div class="nav-item dropdown">
+
+<a
+class="nav-link dropdown-toggle"
+href="#"
+role="button"
+data-bs-toggle="dropdown"
+aria-expanded="false">
+
+Resources
+
+</a>
+
+<ul
+class="dropdown-menu border-0 shadow-lg p-3">
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="service.html">
+
+All Resources
+
+</a>
+</li>
+
+<li><hr class="dropdown-divider"></li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="constitutions.html">
+
+Constitutions
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="kcm-notes.html">
+
+KCM Minutes
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="tournament-bids.html">
+
+Tournament Bids
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="guidelines.html">
+
+Guidelines
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="achievements.html">
+
+Achievements Database
+
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="knc-archive.html">
+
+KNC Archive
+
+</a>
+</li>
+</ul>
+
+</div>
+
+<a class="nav-link" href="team.html">
+Universities
+</a>
+
+<a class="nav-link" href="testimonial.html">
+Community
+</a>
+
+<a class="nav-link active" href="contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero-section">
+
+<div class="hero-overlay"></div>
+
+<div class="container position-relative z-2 text-white">
+
+<div class="row">
+
+<div class="col-lg-8">
+
+<h5
+style="
+letter-spacing:6px;
+font-weight:700;
+color:#ff7583;
+margin-top:120px;
+margin-bottom:25px;
+text-transform:uppercase;
+">
+
+Get In Touch
+
+</h5>
+
+<h1
+class="display-1 fw-bold text-white"
+style="
+line-height:1.05;
+text-shadow:0 4px 18px rgba(0,0,0,0.45);
+">
+
+Connect With<br>
+KIDA
+
+</h1>
+
+<p
+style="
+max-width:820px;
+line-height:1.8;
+font-size:1.8rem;
+font-weight:500;
+color:white;
+margin-top:30px;
+text-shadow:0 3px 16px rgba(0,0,0,0.55);
+">
+
+Reach out regarding tournaments,
+partnerships, educational initiatives,
+and intervarsity collaboration.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+
+<section class="section-padding">
+
+<div class="container">
+
+<div class="row g-5 align-items-stretch">
+
+<div class="col-lg-7">
+
+<div class="contact-card">
+
+<h2 class="fw-bold mb-4">
+Send Us A Message
+</h2>
+
+<p class="mb-5 fs-5">
+Questions, partnerships, workshop requests,
+or tournament inquiries — we'd love to hear from you.
+</p>
+
+<form>
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<input
+type="text"
+class="form-control"
+placeholder="Your Name">
+
+</div>
+
+<div class="col-md-6">
+
+<input
+type="email"
+class="form-control"
+placeholder="Your Email">
+
+</div>
+
+<div class="col-12">
+
+<input
+type="text"
+class="form-control"
+placeholder="Subject">
+
+</div>
+
+<div class="col-12">
+
+<textarea
+rows="6"
+class="form-control"
+placeholder="Your Message"></textarea>
+
+</div>
+
+<div class="col-12">
+
+<button class="btn-kida">
+Send Message
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="col-lg-5">
+
+<div class="contact-info-box">
+
+<h2 class="fw-bold mb-5">
+Contact Information
+</h2>
+
+<div class="info-item">
+
+<div class="info-title">
+Email
+</div>
+
+</div>
+
+<div class="info-item">
+
+<div class="info-title">
+Location
+</div>
+
+<p>
+South Korea
+</p>
+
+</div>
+
+<div class="info-item">
+
+<div class="info-title">
+Organization
+</div>
+
+<p>
+Korea Intervarsity Debate Association
+</p>
+
+</div>
+
+<div class="info-item">
+
+<div class="info-title">
+Partnerships
+</div>
+
+<p>
+universityrelations@kida.org
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="row g-5 align-items-start">
+
+<div class="col-lg-5">
+
+<h2
+style="
+font-weight:800;
+margin-bottom:25px;
+font-size:2.2rem;
+">
+
+KIDA
+
+</h2>
+
+<p
+style="
+font-size:1.1rem;
+line-height:1.9;
+max-width:500px;
+opacity:0.9;
+">
+
+Korea Intervarsity Debate Association promotes
+critical thinking, public speaking,
+and academic discourse across Korean universities.
+
+</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Navigation
+
+</h5>
+
+<div class="d-flex flex-column gap-3">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="tournaments.html">
+Tournaments
+</a>
+
+<a href="service.html">
+Resources
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Contact
+
+</h5>
+
+<p>
+South Korea
+</p>
+
+<div style="
+display:flex;
+gap:18px;
+margin-top:25px;
+">
+
+<a
+href="https://www.facebook.com/groups/295556537170672"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-facebook"></i>
+
+</a>
+
+<a
+href="https://www.instagram.com/kidasecretariat/"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-instagram"></i>
+
+</a>
+
+<a
+href="https://www.youtube.com/@channelkida"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-youtube"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<hr
+style="
+border-color:rgba(255,255,255,0.12);
+margin:60px 0 30px;
+">
+
+<div class="text-center">
+
+<p
+style="
+margin:0;
+opacity:0.75;
+font-size:0.95rem;
+">
+
+© 2026 Korea Intervarsity Debate Association (KIDA)
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script type="module" src="firebase-config.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

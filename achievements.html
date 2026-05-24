@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KIDA Achievements Database</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+background:#f4f8fc;
+overflow-x:hidden;
+}
+
+.navbar{
+background:rgba(255,255,255,0.96);
+backdrop-filter:blur(10px);
+box-shadow:0 2px 20px rgba(0,0,0,0.06);
+}
+
+.navbar-brand{
+font-size:2.3rem;
+font-weight:800;
+color:#d62839 !important;
+}
+
+.nav-link{
+font-weight:500 !important;
+font-size:1rem;
+margin-left:20px;
+color:#16324f !important;
+}
+
+.nav-link:hover{
+color:#d62839 !important;
+}
+
+.dropdown-menu{
+margin-top:18px;
+}
+
+.dropdown-item{
+font-weight:500;
+font-size:0.97rem;
+color:#16324f;
+transition:0.2s;
+}
+
+.dropdown-item:hover{
+background:#f4f8fc;
+color:#d62839;
+}
+
+.dropdown-item.active{
+background:#d62839;
+color:white;
+}
+
+.hero{
+min-height:75vh;
+display:flex;
+align-items:center;
+
+background:
+linear-gradient(
+135deg,
+rgba(6,27,52,0.88),
+rgba(17,65,107,0.78)
+),
+url('img/resource-banner.jpg');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.section-padding{
+padding:120px 0;
+}
+
+.resource-card{
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 18px 50px rgba(0,0,0,0.08);
+}
+
+.filters-box{
+background:#f8fbff;
+padding:28px;
+border-radius:24px;
+border:1px solid rgba(0,0,0,0.05);
+margin-bottom:50px;
+}
+
+.group-section{
+margin-bottom:70px;
+}
+
+.group-title{
+font-size:2.6rem;
+font-weight:800;
+color:#d62839;
+margin-bottom:10px;
+text-align:center;
+}
+
+.group-subtitle{
+text-align:center;
+font-size:1rem;
+color:#16324f;
+margin-bottom:40px;
+}
+
+.resource-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:18px;
+}
+
+.resource-item{
+background:#f8fbff;
+padding:22px;
+border-radius:22px;
+border:1px solid rgba(0,0,0,0.05);
+transition:0.25s;
+}
+
+.resource-item:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.resource-title{
+font-size:1.2rem;
+font-weight:800;
+color:#16324f;
+margin-bottom:14px;
+line-height:1.4;
+}
+
+.resource-meta{
+margin-bottom:18px;
+color:#16324f;
+font-size:0.92rem;
+line-height:1.7;
+}
+
+.filter-label{
+font-weight:700;
+margin-bottom:10px;
+display:block;
+color:#16324f;
+}
+
+.form-select,
+.form-control{
+padding:13px;
+border-radius:14px;
+border:1px solid #dbe7f3;
+}
+
+.btn-kida{
+background:#d62839;
+border:none;
+padding:11px 22px;
+border-radius:999px;
+font-weight:700;
+color:white;
+text-decoration:none;
+display:inline-block;
+transition:0.25s;
+font-size:0.92rem;
+}
+
+.btn-kida:hover{
+background:#bb1f2f;
+color:white;
+transform:translateY(-2px);
+}
+
+.footer{
+background:linear-gradient(135deg,#0f2742,#163d63);
+padding:90px 0 40px;
+color:white;
+}
+
+.footer a{
+color:white;
+text-decoration:none;
+}
+
+.footer a:hover{
+color:#ff7583;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3.2rem !important;
+}
+
+.group-title{
+font-size:2rem;
+}
+
+.resource-card{
+padding:30px;
+}
+
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:991px){
+
+.navbar{
+padding:14px 20px !important;
+}
+
+.navbar-brand img{
+height:48px !important;
+}
+
+.navbar-collapse{
+background:white;
+padding:20px;
+margin-top:18px;
+border-radius:24px;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.nav-link{
+margin-left:0 !important;
+padding:12px 0;
+font-size:1rem;
+}
+
+.dropdown-menu{
+margin-top:10px !important;
+border-radius:18px !important;
+}
+
+.hero{
+min-height:auto;
+padding:170px 0 100px;
+background-attachment:scroll;
+}
+
+.hero h1{
+font-size:3.1rem !important;
+line-height:1.12 !important;
+}
+
+.hero p{
+font-size:1.05rem !important;
+line-height:1.9 !important;
+}
+
+.section-padding{
+padding:80px 0;
+}
+
+.resource-card{
+padding:28px;
+border-radius:24px;
+}
+
+.resource-card h2{
+font-size:2.3rem !important;
+line-height:1.15;
+}
+
+.resource-card p{
+font-size:1rem !important;
+}
+
+.filters-box{
+padding:22px;
+border-radius:20px;
+}
+
+.group-section{
+margin-bottom:55px;
+}
+
+.group-title{
+font-size:2rem;
+line-height:1.2;
+}
+
+.group-subtitle{
+font-size:0.95rem;
+margin-bottom:28px;
+}
+
+.resource-grid{
+grid-template-columns:1fr;
+gap:16px;
+}
+
+.resource-item{
+padding:20px;
+border-radius:20px;
+}
+
+.resource-title{
+font-size:1.08rem;
+line-height:1.45;
+}
+
+.resource-meta{
+font-size:0.9rem;
+line-height:1.7;
+}
+
+.btn-kida{
+width:100%;
+text-align:center;
+padding:13px 20px;
+font-size:0.95rem;
+}
+
+.resource-item div[style*="display:flex"]{
+flex-direction:column;
+gap:12px !important;
+}
+
+.footer{
+padding:70px 0 35px;
+text-align:center;
+}
+
+.footer .row{
+gap:40px;
+}
+
+.footer h2{
+font-size:2rem !important;
+}
+
+.footer p{
+font-size:1rem !important;
+line-height:1.8 !important;
+max-width:100% !important;
+}
+
+.footer div[style*="display:flex"]{
+justify-content:center;
+}
+
+hr{
+margin:45px 0 25px !important;
+}
+
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media(max-width:576px){
+
+.hero{
+padding-top:150px;
+padding-bottom:85px;
+}
+
+.hero h5{
+font-size:0.8rem !important;
+letter-spacing:4px !important;
+}
+
+.hero h1{
+font-size:2.5rem !important;
+}
+
+.hero p{
+font-size:0.98rem !important;
+}
+
+.resource-card{
+padding:22px;
+}
+
+.resource-card h2{
+font-size:2rem !important;
+}
+
+.group-title{
+font-size:1.7rem;
+}
+
+.filters-box{
+padding:18px;
+}
+
+.form-select,
+.form-control{
+font-size:0.95rem;
+padding:12px;
+}
+
+.resource-item{
+padding:18px;
+}
+
+.resource-title{
+font-size:1rem;
+}
+
+.btn-kida{
+font-size:0.9rem;
+padding:12px 18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top py-3 px-4">
+
+<div class="container-fluid">
+
+<a class="navbar-brand d-flex align-items-center" href="index.html">
+
+<img
+src="img/kida-logo.png"
+alt="KIDA Logo"
+style="
+height:60px;
+width:auto;
+object-fit:contain;
+">
+
+</a>
+
+<button
+class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbarNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<div class="navbar-nav ms-auto align-items-center">
+
+<a class="nav-link" href="index.html">
+Home
+</a>
+
+<a class="nav-link" href="about.html">
+About
+</a>
+
+<a class="nav-link" href="tournaments.html">
+Tournaments
+</a>
+
+<div class="nav-item dropdown">
+
+<a
+class="nav-link dropdown-toggle active"
+href="#"
+role="button"
+data-bs-toggle="dropdown">
+
+Resources
+
+</a>
+
+<ul
+class="dropdown-menu border-0 shadow-lg p-3"
+style="
+border-radius:20px;
+min-width:260px;
+">
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="service.html">
+All Resources
+</a>
+</li>
+
+<li><hr class="dropdown-divider"></li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="constitutions.html">
+Constitutions
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="kcm-notes.html">
+KCM Minutes
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="tournament-bids.html">
+Tournament Bids
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3" href="guidelines.html">
+Guidelines
+</a>
+</li>
+
+<li>
+<a class="dropdown-item py-3 rounded-3 active" href="achievements.html">
+Achievements Database
+</a>
+</li>
+
+<li>
+<a
+class="dropdown-item py-3 rounded-3"
+href="knc-archive.html">
+
+KNC Archive
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<a class="nav-link" href="team.html">
+Universities
+</a>
+
+<a class="nav-link" href="testimonial.html">
+Community
+</a>
+
+<a class="nav-link" href="contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="container text-white">
+
+<h5
+style="
+letter-spacing:6px;
+text-transform:uppercase;
+font-weight:700;
+margin-bottom:25px;
+margin-top:120px;
+color:#ff7583;
+">
+
+KIDA Archives
+
+</h5>
+
+<h1
+class="fw-bold"
+style="
+font-size:5.5rem;
+line-height:1.05;
+max-width:900px;
+">
+
+Achievements Database
+
+</h1>
+
+<p
+style="
+font-size:1.2rem;
+line-height:1.9;
+max-width:850px;
+margin-top:30px;
+">
+
+Historical tournament records,
+speaker rankings,
+team breaks,
+and notable Korean university debating accomplishments.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="section-padding">
+
+<div class="container">
+
+<div class="resource-card">
+
+<h2
+class="fw-bold mb-4"
+style="
+font-size:3rem;
+color:#16324f;
+">
+
+Achievement Records
+
+</h2>
+
+<p
+style="
+font-size:1.1rem;
+line-height:2;
+color:#4f6477;
+margin-bottom:50px;
+">
+
+Browse archived tournament results,
+speaker rankings,
+team breaks,
+and adjudication records.
+
+</p>
+
+<div class="filters-box">
+
+<div class="row g-4">
+
+<div class="col-lg-3 col-md-6">
+
+<label class="filter-label">
+Year
+</label>
+
+<select
+id="yearFilter"
+class="form-select">
+
+<option value="all">
+All Years
+</option>
+
+</select>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<label class="filter-label">
+Tournament
+</label>
+
+<select
+id="tournamentFilter"
+class="form-select">
+
+<option value="all">
+All Tournaments
+</option>
+
+</select>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<label class="filter-label">
+Institution
+</label>
+
+<select
+id="institutionFilter"
+class="form-select">
+
+<option value="all">
+All Institutions
+</option>
+
+</select>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<label class="filter-label">
+Search
+</label>
+
+<input
+type="text"
+id="searchFilter"
+class="form-control"
+placeholder="Search speaker, team, award...">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="resource-list"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<script type="module">
+
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAoYu9k8QKVhTalNJgYgFwztmtKPN1mMio",
+
+authDomain: "kida-835b0.firebaseapp.com",
+
+projectId: "kida-835b0",
+
+storageBucket: "kida-835b0.firebasestorage.app",
+
+messagingSenderId: "886653080955",
+
+appId: "1:886653080955:web:2de5128e099e4afd6f99de",
+
+measurementId: "G-J020RVE5EK"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const resourceList =
+document.getElementById("resource-list");
+
+const yearFilter =
+document.getElementById("yearFilter");
+
+const tournamentFilter =
+document.getElementById("tournamentFilter");
+
+const institutionFilter =
+document.getElementById("institutionFilter");
+
+const searchFilter =
+document.getElementById("searchFilter");
+
+let allAchievements = [];
+
+function populateFilters() {
+
+yearFilter.innerHTML =
+`<option value="all">All Years</option>`;
+
+tournamentFilter.innerHTML =
+`<option value="all">All Tournaments</option>`;
+
+institutionFilter.innerHTML =
+`<option value="all">All Institutions</option>`;
+
+const years =
+[...new Set(
+allAchievements
+.map(a => a.year)
+.filter(Boolean)
+)]
+.sort()
+.reverse();
+
+const tournaments =
+[...new Set(
+
+allAchievements
+.map(a => a.tournamentTag)
+.filter(Boolean)
+
+)]
+.sort();
+const institutions = [
+...new Set(
+
+allAchievements.flatMap(a => {
+
+return (a.institution || "")
+.split(",")
+.map(inst => inst.trim())
+.filter(Boolean);
+
+})
+
+)
+
+].sort();
+
+years.forEach((year)=>{
+
+yearFilter.innerHTML += `
+<option value="${year}">
+${year}
+</option>
+`;
+
+});
+
+tournaments.forEach((tournament)=>{
+
+tournamentFilter.innerHTML += `
+<option value="${tournament}">
+${tournament}
+</option>
+`;
+
+});
+
+institutions.forEach((institution)=>{
+
+institutionFilter.innerHTML += `
+<option value="${institution}">
+${institution}
+</option>
+`;
+
+});
+
+}
+
+function renderAchievements(dataArray){
+
+resourceList.innerHTML = "";
+
+if(dataArray.length === 0){
+
+resourceList.innerHTML = `
+
+<p style="
+font-size:1.1rem;
+color:#4f6477;
+">
+
+No matching achievement records found.
+
+</p>
+
+`;
+
+return;
+
+}
+
+const groupedResources = {};
+
+dataArray.forEach((data)=>{
+
+const group =
+data.group || "General";
+
+if(!groupedResources[group]){
+
+groupedResources[group] = [];
+
+}
+
+groupedResources[group].push(data);
+
+});
+
+Object.keys(groupedResources)
+.sort()
+.reverse()
+.forEach((groupName)=>{
+
+let resourcesHTML = "";
+
+groupedResources[groupName]
+.forEach((data)=>{
+
+resourcesHTML += `
+
+<div class="resource-item">
+
+<h3 class="resource-title">
+${data.tournament || data.title || "Untitled"}
+</h3>
+
+<div class="resource-meta">
+
+<div>
+<b>Date:</b>
+${data.tournamentDate || "-"}
+</div>
+
+<div>
+<b>Format:</b>
+${data.format || "-"}
+</div>
+
+<div>
+<b>Institution:</b>
+${data.institution || "-"}
+</div>
+
+</div>
+
+<div style="
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:18px;
+">
+
+<a
+href="achievement-detail.html?id=${data.id}"
+class="btn-kida">
+
+View Details
+
+</a>
+
+${
+data.link
+? `
+<a
+href="${data.link}"
+target="_blank"
+class="btn-kida">
+
+Tab Link
+
+</a>
+`
+: ""
+}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+resourceList.innerHTML += `
+
+<div class="group-section">
+
+<h2 class="group-title">
+
+${groupName}
+
+</h2>
+
+<p class="group-subtitle">
+
+Tournament Achievement Records
+
+</p>
+
+<div class="resource-grid">
+
+${resourcesHTML}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+function applyFilters(){
+
+const selectedYear =
+yearFilter.value;
+
+const selectedTournament =
+tournamentFilter.value;
+
+const selectedInstitution =
+institutionFilter.value;
+
+const searchTerm =
+searchFilter.value
+.toLowerCase()
+.trim();
+
+const filtered =
+allAchievements.filter((item)=>{
+
+const matchesYear =
+selectedYear === "all" ||
+item.year == selectedYear;
+
+const matchesTournament =
+selectedTournament === "all" ||
+item.tournamentTag === selectedTournament;
+
+const searchableInstitutionData = `
+${item.institution || ""}
+${item.breaks || ""}
+${item.individualAwards || ""}
+${item.adjudicationCore || ""}
+`
+.toLowerCase();
+
+const matchesInstitution =
+selectedInstitution === "all" ||
+searchableInstitutionData.includes(selectedInstitution.toLowerCase());
+
+const hiddenSearchData = [
+
+item.title || "",
+item.description || "",
+item.tournament || "",
+item.tournamentDate || "",
+item.format || "",
+item.institution || "",
+item.year || "",
+
+typeof item.breaks === "string"
+? item.breaks
+: JSON.stringify(item.breaks || ""),
+
+typeof item.individualAwards === "string"
+? item.individualAwards
+: JSON.stringify(item.individualAwards || ""),
+
+typeof item.adjudicationCore === "string"
+? item.adjudicationCore
+: JSON.stringify(item.adjudicationCore || "")
+
+]
+.join(" ")
+.toLowerCase()
+.replace(/\s+/g," ");
+
+const matchesSearch =
+searchTerm === "" ||
+hiddenSearchData.includes(
+searchTerm.toLowerCase()
+);
+
+return (
+
+matchesYear &&
+matchesTournament &&
+matchesInstitution &&
+matchesSearch
+
+);
+
+});
+
+renderAchievements(filtered);
+
+}
+
+async function loadResources() {
+
+try{
+
+resourceList.innerHTML = `
+<p style="color:#4f6477;">
+Loading achievements...
+</p>
+`;
+
+const querySnapshot =
+await getDocs(collection(db, "resources"));
+
+allAchievements = [];
+
+querySnapshot.forEach((docSnapshot)=>{
+
+const data = docSnapshot.data();
+
+if(data.category !== "achievements") return;
+
+allAchievements.push({
+
+id: docSnapshot.id,
+
+title: data.title || "",
+description: data.description || "",
+
+tournament: data.tournament || "",
+tournamentTag: data.tournamentTag || "",
+
+tournamentDate: data.tournamentDate || "",
+format: data.format || "",
+
+institution: data.institution || "",
+year: data.year || "",
+group: data.group || "",
+
+breaks: data.breaks || "",
+individualAwards: data.individualAwards || "",
+adjudicationCore: data.adjudicationCore || "",
+
+link: data.link || ""
+
+});
+
+});
+
+populateFilters();
+
+renderAchievements(allAchievements);
+
+}catch(error){
+
+console.error(error);
+
+resourceList.innerHTML = `
+
+<p style="
+color:red;
+font-weight:700;
+">
+
+Failed to load achievements.
+
+</p>
+
+`;
+
+}
+
+}
+
+yearFilter.addEventListener("change", applyFilters);
+
+tournamentFilter.addEventListener("change", applyFilters);
+
+institutionFilter.addEventListener("change", applyFilters);
+
+searchFilter.addEventListener("input", applyFilters);
+
+loadResources();
+
+</script>
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="row g-5 align-items-start">
+
+<div class="col-lg-5">
+
+<h2
+style="
+font-weight:800;
+margin-bottom:25px;
+font-size:2.2rem;
+">
+
+KIDA
+
+</h2>
+
+<p
+style="
+font-size:1.1rem;
+line-height:1.9;
+max-width:500px;
+opacity:0.9;
+">
+
+Korea Intervarsity Debate Association promotes
+critical thinking, public speaking,
+and academic discourse across Korean universities.
+
+</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Navigation
+
+</h5>
+
+<div class="d-flex flex-column gap-3">
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="tournaments.html">Tournaments</a>
+
+<a href="service.html">Resources</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<h5
+style="
+font-weight:700;
+margin-bottom:25px;
+font-size:1.3rem;
+">
+
+Contact
+
+</h5>
+
+<p>
+South Korea
+</p>
+
+<div style="
+display:flex;
+gap:18px;
+margin-top:25px;
+">
+
+<a
+href="https://www.facebook.com/groups/295556537170672"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-facebook"></i>
+
+</a>
+
+<a
+href="https://www.instagram.com/kidasecretariat/"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-instagram"></i>
+
+</a>
+
+<a
+href="https://www.youtube.com/@channelkida"
+target="_blank"
+style="
+color:white;
+font-size:1.5rem;
+transition:0.3s;
+">
+
+<i class="bi bi-youtube"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<hr
+style="
+border-color:rgba(255,255,255,0.12);
+margin:60px 0 30px;
+">
+
+<div class="text-center">
+
+<p
+style="
+margin:0;
+opacity:0.75;
+font-size:0.95rem;
+">
+
+© 2026 Korea Intervarsity Debate Association (KIDA)
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KIDA | Page Not Found</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:
+linear-gradient(
+135deg,
+rgba(7,28,53,0.94),
+rgba(23,74,120,0.86)
+),
+url('img/about.jpg');
+
+background-size:cover;
+background-position:center;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+position:relative;
+color:white;
+}
+
+body::before{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:rgba(255,255,255,0.05);
+border-radius:50%;
+top:-250px;
+right:-200px;
+}
+
+.error-container{
+text-align:center;
+max-width:900px;
+padding:40px;
+position:relative;
+z-index:2;
+}
+
+.error-code{
+font-size:10rem;
+font-weight:800;
+line-height:1;
+margin-bottom:20px;
+color:white;
+text-shadow:0 8px 30px rgba(0,0,0,0.35);
+}
+
+.error-title{
+font-size:3.5rem;
+font-weight:800;
+margin-bottom:25px;
+line-height:1.1;
+}
+
+.error-text{
+font-size:1.35rem;
+line-height:2;
+color:rgba(255,255,255,0.9);
+margin-bottom:50px;
+}
+
+.btn-kida{
+background:#d62839;
+border:none;
+padding:18px 42px;
+border-radius:999px;
+font-weight:700;
+font-size:1rem;
+color:white;
+text-decoration:none;
+display:inline-block;
+transition:0.3s;
+box-shadow:0 10px 25px rgba(214,40,57,0.35);
+}
+
+.btn-kida:hover{
+background:#b71f2e;
+transform:translateY(-3px);
+color:white;
+}
+
+.small-links{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.small-links a{
+color:white;
+text-decoration:none;
+opacity:0.85;
+font-weight:500;
+transition:0.3s;
+}
+
+.small-links a:hover{
+opacity:1;
+color:#ff7583;
+}
+
+@media(max-width:768px){
+
+body{
+padding:30px 20px;
+overflow-y:auto;
+}
+
+body::before{
+width:400px;
+height:400px;
+top:-180px;
+right:-180px;
+}
+
+.error-container{
+padding:20px 10px;
+max-width:100%;
+}
+
+.error-code{
+font-size:5.5rem;
+margin-bottom:15px;
+}
+
+.error-title{
+font-size:2.3rem;
+line-height:1.15;
+margin-bottom:20px;
+}
+
+.error-text{
+font-size:1rem;
+line-height:1.9;
+margin-bottom:35px;
+padding:0 5px;
+}
+
+.btn-kida{
+padding:16px 30px;
+font-size:0.95rem;
+width:100%;
+max-width:280px;
+}
+
+.small-links{
+margin-top:35px;
+gap:18px;
+flex-direction:column;
+align-items:center;
+}
+
+.small-links a{
+font-size:0.95rem;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="error-container">
+
+<h1 class="error-code">
+404
+</h1>
+
+<h2 class="error-title">
+Looks Like This Page
+Couldn’t Be Found
+</h2>
+
+<p class="error-text">
+
+The page you’re looking for may have been moved,
+deleted,
+or is temporarily unavailable.
+Return to the KIDA homepage
+to continue exploring tournaments,
+resources,
+and community events.
+
+</p>
+
+<a href="index.html" class="btn-kida">
+Return Home
+</a>
+
+<div class="small-links">
+
+<a href="about.html">
+About
+</a>
+
+<a href="tournaments.html">
+Tournaments
+</a>
+
+<a href="service.html">
+Resources
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

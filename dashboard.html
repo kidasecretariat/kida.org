@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KIDA Admin Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background:#f4f8fc;
+font-family:'Inter',sans-serif;
+padding:80px 20px;
+}
+
+.dashboard-card{
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 15px 50px rgba(0,0,0,0.08);
+max-width:1300px;
+margin:auto;
+}
+
+h1{
+font-weight:800;
+color:#16324f;
+font-size:3rem;
+}
+
+.section-title{
+font-weight:800;
+color:#16324f;
+margin-bottom:30px;
+font-size:2rem;
+}
+
+.form-control,
+.form-select{
+padding:16px;
+border-radius:16px;
+margin-bottom:20px;
+border:1px solid #dbe5ef;
+}
+
+.form-control:focus,
+.form-select:focus{
+border-color:#1f5f97;
+box-shadow:none;
+}
+
+.btn-kida{
+background:#d62839;
+border:none;
+padding:16px 30px;
+border-radius:16px;
+font-weight:700;
+color:white;
+width:100%;
+font-size:1.05rem;
+transition:0.3s;
+margin-top:10px;
+}
+
+.btn-kida:hover{
+background:#b71f2e;
+}
+
+.resource-item{
+background:#f8fbff;
+padding:30px;
+border-radius:24px;
+margin-top:25px;
+border:1px solid rgba(0,0,0,0.06);
+}
+
+.resource-item h3{
+font-size:1.5rem;
+font-weight:700;
+color:#16324f;
+margin-bottom:15px;
+}
+
+.resource-item p{
+color:#4f6477;
+line-height:1.8;
+}
+
+.action-buttons{
+display:flex;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.edit-btn{
+background:#1f5f97;
+border:none;
+padding:12px 24px;
+border-radius:12px;
+font-weight:700;
+color:white;
+text-decoration:none;
+cursor:pointer;
+}
+
+.delete-btn{
+background:#d62839;
+border:none;
+padding:12px 24px;
+border-radius:12px;
+font-weight:700;
+color:white;
+cursor:pointer;
+}
+
+.logout-btn{
+background:#16324f;
+border:none;
+padding:14px 28px;
+border-radius:14px;
+font-weight:700;
+color:white;
+}
+
+.tab-btn{
+background:#eef4fb;
+border:none;
+padding:14px 26px;
+border-radius:14px;
+font-weight:700;
+color:#16324f;
+transition:0.3s;
+}
+
+.tab-btn:hover{
+background:#dbe9f7;
+}
+
+.tab-btn.active{
+background:#d62839;
+color:white;
+}
+
+.dashboard-tab{
+animation:fadeTab 0.3s ease;
+}
+
+.meta{
+font-size:0.95rem;
+margin-bottom:15px;
+color:#16324f;
+line-height:1.0;
+white-space:pre-line;
+}
+
+@keyframes fadeTab{
+
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@media(max-width:767px){
+
+.hero{
+padding:120px 0 80px;
+}
+
+.hero h1{
+font-size:3rem !important;
+}
+
+.resource-card{
+padding:25px;
+}
+
+.group-title{
+font-size:1.7rem;
+}
+
+}
+
+@media(max-width:768px){
+
+body{
+padding:40px 12px;
+}
+
+.dashboard-card{
+padding:25px;
+border-radius:22px;
+}
+
+h1{
+font-size:2rem;
+line-height:1.2;
+}
+
+.section-title{
+font-size:1.5rem;
+}
+
+.resource-grid{
+grid-template-columns:1fr;
+}
+
+.resource-filter-bar{
+overflow-x:auto;
+flex-wrap:nowrap;
+padding-bottom:10px;
+}
+
+.resource-filter{
+white-space:nowrap;
+}
+
+.action-buttons{
+flex-direction:column;
+}
+
+.edit-btn,
+.delete-btn{
+width:100%;
+text-align:center;
+}
+
+.tab-btn{
+width:100%;
+}
+
+.form-control,
+.form-select{
+font-size:16px;
+}
+
+.modal-dialog{
+margin:10px;
+}
+
+.modal-content{
+border-radius:20px;
+}
+
+}
+
+.resource-manager{
+margin-top:30px;
+}
+
+.resource-filter-bar{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-bottom:35px;
+}
+
+.resource-filter{
+background:#eef4fb;
+border:none;
+padding:12px 20px;
+border-radius:14px;
+font-weight:700;
+color:#16324f;
+transition:0.25s;
+cursor:pointer;
+}
+
+.resource-filter:hover{
+background:#dbe9f7;
+}
+
+.resource-filter.active{
+background:#d62839;
+color:white;
+}
+
+.resource-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+gap:24px;
+}
+
+.resource-item{
+background:white;
+padding:28px;
+border-radius:22px;
+border:1px solid #e3ebf3;
+margin-top:0;
+transition:0.25s;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+min-height:240px;
+}
+
+.resource-item:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(0,0,0,0.07);
+}
+
+.resource-item h3{
+font-size:1.2rem;
+margin-bottom:12px;
+line-height:1.4;
+}
+
+.resource-item p{
+font-size:0.96rem;
+line-height:1.7;
+margin-bottom:18px;
+}
+
+.meta{
+font-size:0.9rem;
+background:#f4f8fc;
+padding:10px 14px;
+border-radius:12px;
+margin-bottom:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard-card">
+
+<div class="d-flex justify-content-between align-items-center mb-5">
+
+<h1>
+KIDA Admin Dashboard
+</h1>
+
+<button
+id="logoutBtn"
+class="logout-btn">
+
+Logout
+
+</button>
+
+</div>
+
+<div
+style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:50px;
+">
+
+<button
+class="tab-btn active"
+onclick="showTab('resourcesTab', this)">
+
+Resources
+
+</button>
+
+<button
+class="tab-btn"
+onclick="showTab('achievementsTab', this)">
+
+Achievements
+
+</button>
+
+<button
+class="tab-btn"
+onclick="showTab('tournamentsTab', this)">
+
+Tournaments
+
+</button>
+
+<button
+class="tab-btn"
+onclick="showTab('universitiesTab', this)">
+
+Universities
+
+</button>
+
+</div>
+
+<!-- RESOURCES TAB -->
+
+<div id="resourcesTab" class="dashboard-tab">
+
+<h2 class="section-title">
+Add Resource
+</h2>
+
+<input
+type="text"
+id="title"
+class="form-control"
+placeholder="Resource Title">
+
+<textarea
+id="description"
+class="form-control"
+rows="5"
+placeholder="Resource Description"></textarea>
+
+<select
+id="category"
+class="form-select">
+
+<option value="constitutions">
+Constitutions
+</option>
+
+<option value="kcm-notes">
+KCM Minutes
+</option>
+
+<option value="tournament-bids">
+Tournament Bids
+</option>
+
+<option value="guidelines">
+Guidelines
+</option>
+
+<option value="knc-archive">
+KNC Archive
+</option>
+
+</select>
+
+<input
+type="text"
+id="group"
+class="form-control"
+placeholder="Section / Group">
+
+<input
+type="text"
+id="link"
+class="form-control"
+placeholder="Link">
+
+<div
+id="kncButtonWrapper"
+style="
+display:none;
+margin-bottom:20px;
+">
+
+<div
+class="form-check"
+style="
+background:#f4f8fc;
+padding:18px 20px;
+border-radius:16px;
+">
+
+<input
+class="form-check-input"
+type="checkbox"
+id="noTabCheckbox"
+style="margin-top:0.35rem;">
+
+<label
+class="form-check-label fw-bold"
+for="noTabCheckbox"
+style="color:#16324f;">
+
+No Tab
+
+</label>
+
+<p
+style="
+margin:8px 0 0;
+font-size:0.92rem;
+color:#4f6477;
+">
+
+If checked, the red tab button will NOT appear
+on the KNC Archive page.
+
+</p>
+
+</div>
+
+</div>
+
+<div
+id="financeReportWrapper"
+style="display:none;">
+
+<input
+type="text"
+id="financeReport"
+class="form-control"
+placeholder="Finance Report Link">
+
+</div>
+
+<button
+id="publishBtn"
+class="btn-kida">
+
+Publish Resource
+
+</button>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+Manage Resources
+</h2>
+
+<div class="resource-manager">
+
+<div class="resource-filter-bar">
+
+<button class="resource-filter active" data-category="all">
+All
+</button>
+
+<button class="resource-filter" data-category="constitutions">
+Constitutions
+</button>
+
+<button class="resource-filter" data-category="kcm-notes">
+KCM Minutes
+</button>
+
+<button class="resource-filter" data-category="tournament-bids">
+Tournament Bids
+</button>
+
+<button class="resource-filter" data-category="guidelines">
+Guidelines
+</button>
+
+<button class="resource-filter" data-category="knc-archive">
+KNC Archive
+</button>
+
+</div>
+
+<div id="resourceList" class="resource-grid"></div>
+
+</div>
+
+</div>
+
+<!-- ACHIEVEMENTS TAB -->
+
+<div
+id="achievementsTab"
+class="dashboard-tab"
+style="display:none;">
+
+<h2 class="section-title">
+Add Achievement Record
+</h2>
+
+<input
+type="text"
+id="achievementTournament"
+class="form-control"
+placeholder="Tournament Name">
+
+<input
+type="text"
+id="achievementTournamentTag"
+class="form-control"
+placeholder="Tournament Tag (Example: NEADC, WUDC, KNC)">
+
+<input
+type="text"
+id="achievementDate"
+class="form-control"
+placeholder="Tournament Date">
+
+<input
+type="text"
+id="achievementFormat"
+class="form-control"
+placeholder="Tournament Format">
+
+<textarea
+id="achievementCore"
+class="form-control"
+rows="4"
+placeholder="Adjudication Core"></textarea>
+
+<textarea
+id="achievementBreaks"
+class="form-control"
+rows="10"
+placeholder="Break Format:
+
+TEAM BREAKS
+Team - Members - # Break - Final Outround
+
+ADJUDICATOR BREAKS
+Judge - # In Rounds Chaired - Furthest Outround Judged
+
+"></textarea>
+
+<textarea
+id="achievementIndividualAwards"
+class="form-control"
+rows="6"
+placeholder="Individual Awards"></textarea>
+
+<input
+type="text"
+id="achievementInstitution"
+class="form-control"
+placeholder="Institutions (comma separated: KUDC, EDiS, HYDS, YUU)">
+
+<input
+type="text"
+id="achievementYear"
+class="form-control"
+placeholder="Year">
+
+<input
+type="text"
+id="achievementLink"
+class="form-control"
+placeholder="Tab Link">
+
+<button
+id="publishAchievementBtn"
+class="btn-kida">
+
+Publish Achievement
+
+</button>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+Manage Achievements
+</h2>
+
+<div
+style="
+display:flex;
+gap:15px;
+margin-bottom:30px;
+flex-wrap:wrap;
+">
+
+<input
+type="text"
+id="achievementSearch"
+class="form-control"
+placeholder="Search tournament..."
+style="max-width:350px;">
+
+<select
+id="achievementTournamentFilter"
+class="form-select"
+style="max-width:300px;">
+
+<option value="all">
+All Tournament Tags
+</option>
+
+</select>
+
+<select
+id="achievementYearFilter"
+class="form-select"
+style="max-width:220px;">
+
+<option value="all">
+All Years
+</option>
+
+</select>
+
+</div>
+
+<div id="achievementList"></div>
+
+</div>
+
+<!-- TOURNAMENTS TAB -->
+
+<div
+id="tournamentsTab"
+class="dashboard-tab"
+style="display:none;">
+
+<h2 class="section-title">
+Add Tournament
+</h2>
+
+<input
+type="text"
+id="tournamentTitle"
+class="form-control"
+placeholder="Tournament Name">
+
+<textarea
+id="tournamentDescription"
+class="form-control"
+rows="4"
+placeholder="Tournament Description"></textarea>
+
+<input
+type="text"
+id="tournamentLink"
+class="form-control"
+placeholder="Tournament Link">
+
+<button
+id="publishTournamentBtn"
+class="btn-kida">
+
+Publish Tournament
+
+</button>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+Manage Tournaments
+</h2>
+
+<div id="tournamentList"></div>
+
+</div>
+
+<!-- UNIVERSITIES TAB -->
+
+<div
+id="universitiesTab"
+class="dashboard-tab"
+style="display:none;">
+
+<h2 class="section-title">
+Add University
+</h2>
+
+<input
+type="text"
+id="universityName"
+class="form-control"
+placeholder="University Name">
+
+<input
+type="text"
+id="universitySubtitle"
+class="form-control"
+placeholder="Full University Name">
+
+<textarea
+id="universityDescription"
+class="form-control"
+rows="5"
+placeholder="University Description"></textarea>
+
+<input
+type="text"
+id="universityImage"
+class="form-control"
+placeholder="Image Path">
+
+<input
+type="text"
+id="universityInstagram"
+class="form-control"
+placeholder="Instagram Link">
+
+<input
+type="text"
+id="universityInstagramHandle"
+class="form-control"
+placeholder="@instagram">
+
+<button
+id="publishUniversityBtn"
+class="btn-kida">
+
+Publish University
+
+</button>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+Manage Universities
+</h2>
+
+<div id="universityList"></div>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+serverTimestamp,
+getDocs,
+getDoc,
+deleteDoc,
+doc,
+updateDoc
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAoYu9k8QKVhTalNJgYgFwztmtKPN1mMio",
+authDomain: "kida-835b0.firebaseapp.com",
+projectId: "kida-835b0",
+storageBucket: "kida-835b0.firebasestorage.app",
+messagingSenderId: "886653080955",
+appId: "1:886653080955:web:2de5128e099e4afd6f99de"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user)=>{
+
+if(!user){
+
+window.location.href = "admin.html";
+
+}
+
+});
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click", async ()=>{
+
+await signOut(auth);
+
+window.location.href = "admin.html";
+
+});
+
+window.showTab = function(tabId, button){
+
+document
+.querySelectorAll(".dashboard-tab")
+.forEach(tab=>{
+
+tab.style.display = "none";
+
+});
+
+document
+.getElementById(tabId)
+.style.display = "block";
+
+document
+.querySelectorAll(".tab-btn")
+.forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+
+button.classList.add("active");
+
+};
+
+const categorySelect =
+document.getElementById("category");
+
+const financeWrapper =
+document.getElementById("financeReportWrapper");
+
+function toggleFinanceField(){
+
+if(categorySelect.value === "tournament-bids"){
+
+financeWrapper.style.display = "block";
+
+}else{
+
+financeWrapper.style.display = "none";
+
+}
+
+const kncWrapper =
+document.getElementById("kncButtonWrapper");
+
+if(categorySelect.value === "knc-archive"){
+
+kncWrapper.style.display = "block";
+
+}else{
+
+kncWrapper.style.display = "none";
+
+}
+
+}
+
+categorySelect.addEventListener(
+"change",
+toggleFinanceField
+);
+
+toggleFinanceField();
+
+document
+.getElementById("publishBtn")
+.addEventListener("click", async ()=>{
+
+await addDoc(collection(db,"resources"),{
+
+title:
+document.getElementById("title").value,
+
+description:
+document.getElementById("description").value,
+
+group:
+document.getElementById("group").value,
+
+link:
+document.getElementById("link").value,
+
+noTab:
+document.getElementById("noTabCheckbox").checked,
+
+financeReport:
+document.getElementById("financeReport").value,
+
+category:
+document.getElementById("category").value,
+
+createdAt: serverTimestamp()
+
+});
+
+alert("Resource Published");
+
+loadResources();
+
+});
+
+document
+.getElementById("publishAchievementBtn")
+.addEventListener("click", async ()=>{
+
+await addDoc(collection(db,"resources"),{
+
+category:"achievements",
+
+title:
+document.getElementById("achievementTournament").value,
+
+tournament:
+document.getElementById("achievementTournament").value,
+
+tournamentTag:
+document.getElementById("achievementTournamentTag").value,
+
+tournamentDate:
+document.getElementById("achievementDate").value,
+
+format:
+document.getElementById("achievementFormat").value,
+
+adjudicationCore:
+document.getElementById("achievementCore").value,
+
+breaks:
+document.getElementById("achievementBreaks").value,
+
+individualAwards:
+document.getElementById("achievementIndividualAwards").value,
+
+institution:
+document.getElementById("achievementInstitution").value,
+
+institutions:
+document
+.getElementById("achievementInstitution")
+.value
+.split(",")
+.map(inst => inst.trim())
+.filter(inst => inst !== ""),
+
+year:
+document.getElementById("achievementYear").value,
+
+group:
+document.getElementById("achievementYear").value,
+
+link:
+document.getElementById("achievementLink").value,
+
+description:
+`${document.getElementById("achievementFormat").value} • ${document.getElementById("achievementDate").value}`,
+
+createdAt: serverTimestamp()
+
+});
+
+alert("Achievement Published");
+
+loadAchievements();
+
+});
+
+document
+.getElementById("publishTournamentBtn")
+.addEventListener("click", async ()=>{
+
+await addDoc(collection(db,"tournaments"),{
+
+title:
+document.getElementById("tournamentTitle").value,
+
+description:
+document.getElementById("tournamentDescription").value,
+
+link:
+document.getElementById("tournamentLink").value,
+
+createdAt: serverTimestamp()
+
+});
+
+alert("Tournament Published");
+
+loadTournaments();
+
+});
+
+document
+.getElementById("publishUniversityBtn")
+.addEventListener("click", async ()=>{
+
+await addDoc(collection(db,"universities"),{
+
+name:
+document.getElementById("universityName").value,
+
+subtitle:
+document.getElementById("universitySubtitle").value,
+
+description:
+document.getElementById("universityDescription").value,
+
+image:
+document.getElementById("universityImage").value,
+
+instagram:
+document.getElementById("universityInstagram").value,
+
+instagramHandle:
+document.getElementById("universityInstagramHandle").value,
+
+createdAt: serverTimestamp()
+
+});
+
+alert("University Published");
+
+loadUniversities();
+
+});
+
+async function loadResources(filter = "all"){
+
+const list =
+document.getElementById("resourceList");
+
+list.innerHTML = "";
+
+const snapshot =
+await getDocs(collection(db,"resources"));
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+if(data.category === "achievements") return;
+
+if(
+filter !== "all" &&
+data.category !== filter &&
+!(filter === "knc-archive" && data.category === "international-resources")
+) return;
+
+list.innerHTML += `
+
+<div class="resource-item">
+
+<div>
+
+<h3>${data.title || "-"}</h3>
+
+<p>${data.description || "-"}</p>
+
+<div class="meta">
+${data.group || "General"}
+</div>
+
+</div>
+
+<div class="action-buttons">
+
+<button
+class="edit-btn"
+onclick="openEditor('${docSnap.id}','resources')">
+
+Edit
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteResource('${docSnap.id}','resources')">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+async function loadAchievements(){
+
+const list =
+document.getElementById("achievementList");
+
+const filterSelect =
+document.getElementById("achievementTournamentFilter");
+
+const searchInput =
+document.getElementById("achievementSearch");
+
+list.innerHTML = "";
+
+const snapshot =
+await getDocs(collection(db,"resources"));
+
+const tournamentTags = new Set();
+const years = new Set();
+
+const achievements = [];
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+if(data.category !== "achievements") return;
+
+achievements.push({
+id: docSnap.id,
+data
+});
+
+if(data.tournamentTag){
+tournamentTags.add(data.tournamentTag);
+}
+
+if(data.year){
+years.add(data.year);
+}
+
+});
+
+/* TOURNAMENT TAG FILTER */
+
+filterSelect.innerHTML = `
+<option value="all">
+All Tournament Tags
+</option>
+`;
+
+[...tournamentTags]
+.sort()
+.forEach(tag=>{
+
+filterSelect.innerHTML += `
+<option value="${tag}">
+${tag}
+</option>
+`;
+
+});
+
+/* YEAR FILTER */
+
+const yearFilter =
+document.getElementById("achievementYearFilter");
+
+yearFilter.innerHTML = `
+<option value="all">
+All Years
+</option>
+`;
+
+[...years]
+.sort((a,b)=>b-a)
+.forEach(year=>{
+
+yearFilter.innerHTML += `
+<option value="${year}">
+${year}
+</option>
+`;
+
+});
+
+function renderAchievements(){
+
+list.innerHTML = "";
+
+const selectedTournamentTag =
+filterSelect.value;
+
+const selectedYear =
+document.getElementById("achievementYearFilter").value;
+
+const searchTerm =
+searchInput.value.toLowerCase();
+
+achievements.forEach(({id,data})=>{
+
+if(
+selectedTournamentTag !== "all" &&
+data.tournamentTag !== selectedTournamentTag
+){
+return;
+}
+
+if(
+selectedYear !== "all" &&
+data.year !== selectedYear
+){
+return;
+}
+
+if(
+searchTerm &&
+!data.tournament.toLowerCase().includes(searchTerm)
+){
+return;
+}
+
+list.innerHTML += `
+
+<div class="resource-item">
+
+<h3>${data.tournament || "-"}</h3>
+
+<div class="meta">
+
+<div><b>Date:</b> ${data.tournamentDate || "-"}</div>
+
+<div><b>Format:</b> ${data.format || "-"}</div>
+
+<div><b>Institution:</b> ${data.institution || "-"}</div>
+
+<div><b>Year:</b> ${data.year || "-"}</div>
+
+</div>
+
+<p>${data.description || "-"}</p>
+
+${
+data.breaks
+? `
+<div class="meta">
+<b>Breaks:</b>
+
+${data.breaks}
+</div>
+`
+: ""
+}
+
+<div class="action-buttons">
+
+<a
+href="achievement-detail.html?id=${id}"
+class="edit-btn">
+
+Open Record
+
+</a>
+
+<button
+class="edit-btn"
+onclick="openEditor('${id}','resources')">
+
+Edit
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteResource('${id}','resources')">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+filterSelect.onchange = renderAchievements;
+
+document
+.getElementById("achievementYearFilter")
+.onchange = renderAchievements;
+
+searchInput.oninput = renderAchievements;
+
+renderAchievements();
+
+}
+
+async function loadTournaments(){
+
+const list =
+document.getElementById("tournamentList");
+
+list.innerHTML = "";
+
+const snapshot =
+await getDocs(collection(db,"tournaments"));
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+list.innerHTML += `
+
+<div class="resource-item">
+
+<h3>${data.title || "-"}</h3>
+
+<p>${data.description || "-"}</p>
+
+<div class="action-buttons">
+
+<button
+class="edit-btn"
+onclick="openEditor('${docSnap.id}','tournaments')">
+
+Edit
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteResource('${docSnap.id}','tournaments')">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+async function loadUniversities(){
+
+const list =
+document.getElementById("universityList");
+
+list.innerHTML = "";
+
+const snapshot =
+await getDocs(collection(db,"universities"));
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+list.innerHTML += `
+
+<div class="resource-item">
+
+<h3>${data.name || "-"}</h3>
+
+<p>${data.subtitle || "-"}</p>
+
+<p>${data.description || "-"}</p>
+
+<div class="action-buttons">
+
+<button
+class="edit-btn"
+onclick="openEditor('${docSnap.id}','universities')">
+
+Edit
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteResource('${docSnap.id}','universities')">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+window.deleteResource = async function(id, collectionName){
+
+if(!confirm("Delete item?")) return;
+
+await deleteDoc(doc(db,collectionName,id));
+
+loadResources();
+loadAchievements();
+loadTournaments();
+loadUniversities();
+
+};
+
+document.addEventListener("click", (e)=>{
+
+if(e.target.classList.contains("resource-filter")){
+
+document
+.querySelectorAll(".resource-filter")
+.forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+
+e.target.classList.add("active");
+
+const category =
+e.target.dataset.category;
+
+loadResources(category);
+
+}
+
+});
+
+window.openEditor = async function(id, collectionName){
+
+const docRef =
+doc(db, collectionName, id);
+
+const snap =
+await getDoc(docRef);
+
+if(!snap.exists()) return;
+
+const data = snap.data();
+
+document.getElementById("editDocId").value = id;
+
+document.getElementById("editCollection").value = collectionName;
+
+/* HIDE ALL EDITORS */
+
+document.getElementById("resourceEditor").style.display = "none";
+document.getElementById("achievementEditor").style.display = "none";
+document.getElementById("tournamentEditor").style.display = "none";
+document.getElementById("universityEditor").style.display = "none";
+
+/* RESOURCES */
+
+if(
+collectionName === "resources" &&
+data.category !== "achievements"
+){
+
+document.getElementById("resourceEditor").style.display = "block";
+
+document.getElementById("editResourceTitle").value =
+data.title || "";
+
+document.getElementById("editResourceDescription").value =
+data.description || "";
+
+document.getElementById("editResourceLink").value =
+data.link || "";
+
+document.getElementById("editFinanceReport").value =
+data.financeReport || "";
+
+const financeEditWrapper =
+document.getElementById("editFinanceWrapper");
+
+if(data.category === "tournament-bids"){
+
+financeEditWrapper.style.display = "block";
+
+}else{
+
+financeEditWrapper.style.display = "none";
+
+}
+
+document.getElementById("editResourceGroup").value =
+data.group || "";
+
+}
+
+/* ACHIEVEMENTS */
+
+if(
+collectionName === "resources" &&
+data.category === "achievements"
+){
+
+document.getElementById("achievementEditor").style.display = "block";
+
+document.getElementById("editAchievementTitle").value =
+data.tournament || "";
+
+document.getElementById("editAchievementTag").value =
+data.tournamentTag || "";
+
+document.getElementById("editAchievementDate").value =
+data.tournamentDate || "";
+
+document.getElementById("editAchievementFormat").value =
+data.format || "";
+
+document.getElementById("editAchievementInstitution").value =
+data.institution || "";
+
+document.getElementById("editAchievementBreaks").value =
+data.breaks || "";
+
+document.getElementById("editAchievementCore").value =
+data.adjudicationCore || "";
+
+document.getElementById("editAchievementAwards").value =
+data.individualAwards || "";
+
+document.getElementById("editAchievementLink").value =
+data.link || "";
+
+}
+
+/* TOURNAMENTS */
+
+if(collectionName === "tournaments"){
+
+document.getElementById("tournamentEditor").style.display = "block";
+
+document.getElementById("editTournamentTitle").value =
+data.title || "";
+
+document.getElementById("editTournamentDescription").value =
+data.description || "";
+
+document.getElementById("editTournamentLink").value =
+data.link || "";
+
+}
+
+/* UNIVERSITIES */
+
+if(collectionName === "universities"){
+
+document.getElementById("universityEditor").style.display = "block";
+
+document.getElementById("editUniversityName").value =
+data.name || "";
+
+document.getElementById("editUniversitySubtitle").value =
+data.subtitle || "";
+
+document.getElementById("editUniversityDescription").value =
+data.description || "";
+
+document.getElementById("editUniversityImage").value =
+data.image || "";
+
+document.getElementById("editUniversityInstagram").value =
+data.instagram || "";
+
+document.getElementById("editUniversityInstagramHandle").value =
+data.instagramHandle || "";
+
+}
+
+const modal =
+new bootstrap.Modal(
+document.getElementById("editModal")
+);
+
+modal.show();
+
+};
+
+document
+.getElementById("saveEditBtn")
+.addEventListener("click", async ()=>{
+
+const id =
+document.getElementById("editDocId").value;
+
+const collectionName =
+document.getElementById("editCollection").value;
+
+let updateData = {};
+
+/* RESOURCE */
+
+if(
+collectionName === "resources" &&
+document.getElementById("resourceEditor").style.display === "block"
+){
+
+updateData = {
+
+title:
+document.getElementById("editResourceTitle").value,
+
+description:
+document.getElementById("editResourceDescription").value,
+
+link:
+document.getElementById("editResourceLink").value,
+
+financeReport:
+document.getElementById("editFinanceReport").value,
+
+group:
+document.getElementById("editResourceGroup").value
+
+};
+
+}
+
+/* ACHIEVEMENTS */
+
+if(
+collectionName === "resources" &&
+document.getElementById("achievementEditor").style.display === "block"
+){
+
+updateData = {
+
+tournament:
+document.getElementById("editAchievementTitle").value,
+
+title:
+document.getElementById("editAchievementTitle").value,
+
+tournamentTag:
+document.getElementById("editAchievementTag").value,
+
+tournamentDate:
+document.getElementById("editAchievementDate").value,
+
+format:
+document.getElementById("editAchievementFormat").value,
+
+institution:
+document.getElementById("editAchievementInstitution").value,
+
+breaks:
+document.getElementById("editAchievementBreaks").value,
+
+adjudicationCore:
+document.getElementById("editAchievementCore").value,
+
+individualAwards:
+document.getElementById("editAchievementAwards").value,
+
+link:
+document.getElementById("editAchievementLink").value
+
+};
+
+}
+
+/* TOURNAMENTS */
+
+if(collectionName === "tournaments"){
+
+updateData = {
+
+title:
+document.getElementById("editTournamentTitle").value,
+
+description:
+document.getElementById("editTournamentDescription").value,
+
+link:
+document.getElementById("editTournamentLink").value
+
+};
+
+}
+
+/* UNIVERSITIES */
+
+if(collectionName === "universities"){
+
+updateData = {
+
+name:
+document.getElementById("editUniversityName").value,
+
+subtitle:
+document.getElementById("editUniversitySubtitle").value,
+
+description:
+document.getElementById("editUniversityDescription").value,
+
+image:
+document.getElementById("editUniversityImage").value,
+
+instagram:
+document.getElementById("editUniversityInstagram").value,
+
+instagramHandle:
+document.getElementById("editUniversityInstagramHandle").value
+
+};
+
+}
+
+await updateDoc(
+doc(db, collectionName, id),
+updateData
+);
+
+alert("Changes Saved");
+
+bootstrap.Modal
+.getInstance(
+document.getElementById("editModal")
+)
+.hide();
+
+loadResources();
+loadAchievements();
+loadTournaments();
+loadUniversities();
+
+});
+
+loadResources();
+loadAchievements();
+loadTournaments();
+loadUniversities();
+
+</script>
+
+<!-- EDIT MODAL -->
+
+<div
+class="modal fade"
+id="editModal"
+tabindex="-1">
+
+<div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+<div
+class="modal-content"
+style="
+border-radius:30px;
+border:none;
+max-height:90vh;
+overflow:hidden;
+">
+
+<div class="modal-header">
+
+<h5
+class="modal-title fw-bold"
+style="color:#16324f;">
+
+Edit Item
+
+</h5>
+
+<button
+type="button"
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
+
+</div>
+
+<div
+class="modal-body"
+style="
+overflow-y:auto;
+padding:30px;
+max-height:70vh;
+">
+
+<input type="hidden" id="editDocId">
+<input type="hidden" id="editCollection">
+
+<!-- RESOURCE EDITOR -->
+
+<div id="resourceEditor" style="display:none;">
+
+<div class="mb-3">
+<label class="fw-bold">Title</label>
+<input type="text" id="editResourceTitle" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Description</label>
+<textarea id="editResourceDescription" class="form-control" rows="5"></textarea>
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Link</label>
+<input type="text" id="editResourceLink" class="form-control">
+</div>
+
+<div
+class="mb-3"
+id="editFinanceWrapper"
+style="display:none;">
+
+<label class="fw-bold">
+Finance Report
+</label>
+
+<input
+type="text"
+id="editFinanceReport"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Group</label>
+<input type="text" id="editResourceGroup" class="form-control">
+</div>
+
+</div>
+
+<!-- ACHIEVEMENT EDITOR -->
+
+<div id="achievementEditor" style="display:none;">
+
+<div class="mb-3">
+<label class="fw-bold">Tournament</label>
+<input type="text" id="editAchievementTitle" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Tournament Tag</label>
+<input type="text" id="editAchievementTag" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Date</label>
+<input type="text" id="editAchievementDate" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Format</label>
+<input type="text" id="editAchievementFormat" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Institutions</label>
+<input type="text" id="editAchievementInstitution" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Breaks</label>
+<textarea id="editAchievementBreaks" class="form-control" rows="8"></textarea>
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Adjudication Core</label>
+<textarea id="editAchievementCore" class="form-control" rows="6"></textarea>
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Individual Awards</label>
+<textarea id="editAchievementAwards" class="form-control" rows="6"></textarea>
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Link</label>
+<input type="text" id="editAchievementLink" class="form-control">
+</div>
+
+</div>
+
+<!-- TOURNAMENT EDITOR -->
+
+<div id="tournamentEditor" style="display:none;">
+
+<div class="mb-3">
+<label class="fw-bold">Tournament Name</label>
+<input type="text" id="editTournamentTitle" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Description</label>
+<textarea id="editTournamentDescription" class="form-control" rows="5"></textarea>
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Link</label>
+<input type="text" id="editTournamentLink" class="form-control">
+</div>
+
+</div>
+
+<!-- UNIVERSITY EDITOR -->
+
+<div id="universityEditor" style="display:none;">
+
+<div class="mb-3">
+<label class="fw-bold">University Name</label>
+<input type="text" id="editUniversityName" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Subtitle</label>
+<input type="text" id="editUniversitySubtitle" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Description</label>
+<textarea id="editUniversityDescription" class="form-control" rows="5"></textarea>
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Image</label>
+<input type="text" id="editUniversityImage" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Instagram</label>
+<input type="text" id="editUniversityInstagram" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Instagram Handle</label>
+<input type="text" id="editUniversityInstagramHandle" class="form-control">
+</div>
+
+</div>
+
+<div class="d-flex gap-3 mt-4">
+
+<button
+type="button"
+class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<button
+id="saveEditBtn"
+type="button"
+class="btn btn-danger">
+
+Save Changes
+
+</button>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
