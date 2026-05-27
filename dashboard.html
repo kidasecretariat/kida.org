@@ -1598,9 +1598,6 @@ data.receiverEmail || "";
 document.getElementById("contactPartnerships").value =
 data.partnerships || "";
 
-document.getElementById("contactPhone").value =
-data.phone || "";
-
 document.getElementById("contactLocation").value =
 data.location || "";
 
@@ -1613,27 +1610,42 @@ document
 .getElementById("saveContactSettingsBtn")
 .addEventListener("click", async ()=>{
 
-await setDoc(
-doc(db, "settings", "contact"),
-{
+const updateData = {
+
 publicEmail:
-document.getElementById("contactPublicEmail").value,
+document.getElementById("contactPublicEmail").value.trim(),
 
 receiverEmail:
-document.getElementById("contactReceiverEmail").value,
+document.getElementById("contactReceiverEmail").value.trim(),
 
 partnerships:
-document.getElementById("contactPartnerships").value,
+document.getElementById("contactPartnerships").value.trim(),
 
 location:
-document.getElementById("contactLocation").value,
+document.getElementById("contactLocation").value.trim(),
 
 organization:
-document.getElementById("contactOrganization").value
+document.getElementById("contactOrganization").value.trim()
+
+};
+
+Object.keys(updateData).forEach(key => {
+
+if(updateData[key] === ""){
+delete updateData[key];
 }
+
+});
+
+await setDoc(
+doc(db, "settings", "contact"),
+updateData,
+{ merge:true }
 );
 
 alert("Contact Settings Saved");
+
+loadContactSettings();
 
 });
 
