@@ -405,6 +405,14 @@ Contact Settings
 
 </button>
 
+<button
+class="tab-btn"
+onclick="showTab('communityTab', this)">
+
+Community
+
+</button>
+
 </div>
 
 <!-- RESOURCES TAB -->
@@ -901,6 +909,55 @@ Save Contact Settings
 
 </div>
 
+<!-- COMMUNITY TAB -->
+
+<div
+id="communityTab"
+class="dashboard-tab"
+style="display:none;">
+
+<h2 class="section-title">
+Add Community Photo
+</h2>
+
+<input
+type="text"
+id="communityTitle"
+class="form-control"
+placeholder="Photo Title">
+
+<input
+type="text"
+id="communityImage"
+class="form-control"
+placeholder="Google Drive Image Link">
+
+<textarea
+id="communityCaption"
+class="form-control"
+rows="4"
+placeholder="Caption"></textarea>
+
+<button
+id="publishCommunityBtn"
+class="btn-kida">
+
+Publish Photo
+
+</button>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+Manage Community Photos
+</h2>
+
+<div id="communityList" class="resource-grid"></div>
+
+</div>
+
+</div>
+
 </div>
 
 <script type="module">
@@ -945,6 +1002,24 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const auth = getAuth(app);
+
+function convertDriveLink(url){
+
+if(url.includes("drive.google.com")){
+
+const match = url.match(/[-\w]{25,}/);
+
+if(match){
+
+return `https://drive.google.com/thumbnail?id=${match[0]}&sz=w2000`;
+
+}
+
+}
+
+return url;
+
+}
 
 onAuthStateChanged(auth, (user)=>{
 
@@ -1190,6 +1265,33 @@ createdAt: serverTimestamp()
 alert("University Published");
 
 loadUniversities();
+
+});
+
+document
+.getElementById("publishCommunityBtn")
+.addEventListener("click", async ()=>{
+
+await addDoc(collection(db,"community"),{
+
+title:
+document.getElementById("communityTitle").value,
+
+image:
+convertDriveLink(
+document.getElementById("communityImage").value
+),
+
+caption:
+document.getElementById("communityCaption").value,
+
+createdAt: serverTimestamp()
+
+});
+
+alert("Community Photo Published");
+
+loadCommunity();
 
 });
 
@@ -1562,6 +1664,66 @@ Delete
 
 }
 
+async function loadCommunity(){
+
+const list =
+document.getElementById("communityList");
+
+list.innerHTML = "";
+
+const snapshot =
+await getDocs(collection(db,"community"));
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+list.innerHTML += `
+
+<div class="resource-item">
+
+<img
+src="${data.image}"
+style="
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:18px;
+">
+
+<h3>${data.title || "-"}</h3>
+
+<p>${data.caption || "-"}</p>
+
+<div class="action-buttons">
+
+<button
+class="edit-btn"
+onclick="openEditor('${docSnap.id}','community')">
+
+Edit
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteResource('${docSnap.id}','community')">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
 window.deleteResource = async function(id, collectionName){
 
 if(!confirm("Delete item?")) return;
@@ -1572,6 +1734,7 @@ loadResources();
 loadAchievements();
 loadTournaments();
 loadUniversities();
+loadCommunity();
 
 };
 
@@ -1697,6 +1860,10 @@ document.getElementById("achievementEditor").style.display = "none";
 document.getElementById("tournamentEditor").style.display = "none";
 document.getElementById("universityEditor").style.display = "none";
 
+if(document.getElementById("communityEditor")){
+document.getElementById("communityEditor").style.display = "none";
+}
+
 /* RESOURCES */
 
 if(
@@ -1814,6 +1981,23 @@ data.instagram || "";
 
 document.getElementById("editUniversityInstagramHandle").value =
 data.instagramHandle || "";
+
+}
+
+/* COMMUNITY */
+
+if(collectionName === "community"){
+
+document.getElementById("communityEditor").style.display = "block";
+
+document.getElementById("editCommunityTitle").value =
+data.title || "";
+
+document.getElementById("editCommunityImage").value =
+data.image || "";
+
+document.getElementById("editCommunityCaption").value =
+data.caption || "";
 
 }
 
@@ -1956,6 +2140,27 @@ document.getElementById("editUniversityInstagramHandle").value
 
 }
 
+/* COMMUNITY */
+
+if(collectionName === "community"){
+
+updateData = {
+
+title:
+document.getElementById("editCommunityTitle").value,
+
+image:
+convertDriveLink(
+document.getElementById("editCommunityImage").value
+),
+
+caption:
+document.getElementById("editCommunityCaption").value
+
+};
+
+}
+
 await updateDoc(
 doc(db, collectionName, id),
 updateData
@@ -1973,6 +2178,7 @@ loadResources();
 loadAchievements();
 loadTournaments();
 loadUniversities();
+loadCommunity();
 
 });
 
@@ -1980,6 +2186,7 @@ loadResources();
 loadAchievements();
 loadTournaments();
 loadUniversities();
+loadCommunity();
 
 </script>
 
@@ -2199,6 +2406,27 @@ class="btn btn-danger">
 Save Changes
 
 </button>
+
+</div>
+
+<!-- COMMUNITY EDITOR -->
+
+<div id="communityEditor" style="display:none;">
+
+<div class="mb-3">
+<label class="fw-bold">Photo Title</label>
+<input type="text" id="editCommunityTitle" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Image Link</label>
+<input type="text" id="editCommunityImage" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="fw-bold">Caption</label>
+<textarea id="editCommunityCaption" class="form-control" rows="5"></textarea>
+</div>
 
 </div>
 
