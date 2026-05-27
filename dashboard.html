@@ -397,6 +397,14 @@ Universities
 
 </button>
 
+<button
+class="tab-btn"
+onclick="showTab('contactTab', this)">
+
+Contact Settings
+
+</button>
+
 </div>
 
 <!-- RESOURCES TAB -->
@@ -813,6 +821,86 @@ Manage Universities
 
 </div>
 
+<!-- CONTACT SETTINGS TAB -->
+
+<div
+id="contactTab"
+class="dashboard-tab"
+style="display:none;">
+
+<h2 class="section-title">
+Contact Settings
+</h2>
+
+<input
+type="email"
+id="contactPublicEmail"
+class="form-control"
+placeholder="Public Contact Email">
+
+<input
+type="email"
+id="contactReceiverEmail"
+class="form-control"
+placeholder="Receiver Email">
+
+<input
+type="text"
+id="contactPartnerships"
+class="form-control"
+placeholder="Partnerships Number">
+
+<input
+type="text"
+id="contactLocation"
+class="form-control"
+placeholder="Location">
+
+<input
+type="text"
+id="contactOrganization"
+class="form-control"
+placeholder="Organization Name">
+
+<div
+style="
+background:#f4f8fc;
+padding:18px 20px;
+border-radius:16px;
+margin-top:10px;
+margin-bottom:20px;
+border:1px solid #dbe5ef;
+">
+
+<p style="
+margin:0;
+font-size:0.95rem;
+line-height:1.7;
+color:#4f6477;
+">
+
+Only update the fields that need to be changed.
+Any untouched fields will remain the same.
+
+<br><br>
+
+<b>Receiver Email</b> is private and only used internally
+for receiving contact form submissions.
+
+</p>
+
+</div>
+
+<button
+id="saveContactSettingsBtn"
+class="btn-kida">
+
+Save Contact Settings
+
+</button>
+
+</div>
+
 </div>
 
 <script type="module">
@@ -829,7 +917,8 @@ getDocs,
 getDoc,
 deleteDoc,
 doc,
-updateDoc
+updateDoc,
+setDoc
 }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
@@ -1286,7 +1375,7 @@ return;
 
 if(
 searchTerm &&
-!data.tournament.toLowerCase().includes(searchTerm)
+!(data.tournament || "").toLowerCase().includes(searchTerm)
 ){
 return;
 }
@@ -1485,6 +1574,70 @@ loadTournaments();
 loadUniversities();
 
 };
+
+/* =========================
+CONTACT SETTINGS
+========================= */
+
+async function loadContactSettings(){
+
+const snap = await getDoc(
+doc(db, "settings", "contact")
+);
+
+if(!snap.exists()) return;
+
+const data = snap.data();
+
+document.getElementById("contactPublicEmail").value =
+data.publicEmail || "";
+
+document.getElementById("contactReceiverEmail").value =
+data.receiverEmail || "";
+
+document.getElementById("contactPartnerships").value =
+data.partnerships || "";
+
+document.getElementById("contactPhone").value =
+data.phone || "";
+
+document.getElementById("contactLocation").value =
+data.location || "";
+
+document.getElementById("contactOrganization").value =
+data.organization || "";
+
+}
+
+document
+.getElementById("saveContactSettingsBtn")
+.addEventListener("click", async ()=>{
+
+await setDoc(
+doc(db, "settings", "contact"),
+{
+publicEmail:
+document.getElementById("contactPublicEmail").value,
+
+receiverEmail:
+document.getElementById("contactReceiverEmail").value,
+
+partnerships:
+document.getElementById("contactPartnerships").value,
+
+location:
+document.getElementById("contactLocation").value,
+
+organization:
+document.getElementById("contactOrganization").value
+}
+);
+
+alert("Contact Settings Saved");
+
+});
+
+loadContactSettings();
 
 document.addEventListener("click", (e)=>{
 
@@ -2034,6 +2187,8 @@ class="btn btn-danger">
 Save Changes
 
 </button>
+
+</div>
 
 </div>
 
