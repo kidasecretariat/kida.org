@@ -652,15 +652,49 @@ Questions, partnerships, workshop requests,
 or tournament inquiries — we'd love to hear from you.
 </p>
 
-<form>
+<form id="contact-form">
 
 <div class="row g-4">
+
+<div class="col-12">
+
+<div
+class="form-check mb-2">
+
+<input
+class="form-check-input"
+type="checkbox"
+id="anonymous-toggle">
+
+<label
+class="form-check-label fw-semibold"
+for="anonymous-toggle">
+
+Submit Anonymously
+
+</label>
+
+</div>
+
+<p
+style="
+font-size:0.92rem;
+color:#6c757d;
+margin-bottom:10px;
+">
+
+If checked, your name and email are optional.
+
+</p>
+
+</div>
 
 <div class="col-md-6">
 
 <input
 type="text"
 class="form-control"
+id="sender-name"
 placeholder="Your Name">
 
 </div>
@@ -670,6 +704,7 @@ placeholder="Your Name">
 <input
 type="email"
 class="form-control"
+id="sender-email"
 placeholder="Your Email">
 
 </div>
@@ -679,7 +714,9 @@ placeholder="Your Email">
 <input
 type="text"
 class="form-control"
-placeholder="Subject">
+id="message-subject"
+placeholder="Subject"
+required>
 
 </div>
 
@@ -688,14 +725,20 @@ placeholder="Subject">
 <textarea
 rows="6"
 class="form-control"
-placeholder="Your Message"></textarea>
+id="message-body"
+placeholder="Your Message"
+required></textarea>
 
 </div>
 
 <div class="col-12">
 
-<button class="btn-kida">
+<button
+type="submit"
+class="btn-kida">
+
 Send Message
+
 </button>
 
 </div>
@@ -722,6 +765,10 @@ Contact Information
 Email
 </div>
 
+<p id="contact-email">
+kida27thsecretariat@gmail.com
+</p>
+
 </div>
 
 <div class="info-item">
@@ -730,7 +777,7 @@ Email
 Location
 </div>
 
-<p>
+<p id="contact-location">
 South Korea
 </p>
 
@@ -742,7 +789,7 @@ South Korea
 Organization
 </div>
 
-<p>
+<p id="contact-organization">
 Korea Intervarsity Debate Association
 </p>
 
@@ -754,9 +801,11 @@ Korea Intervarsity Debate Association
 Partnerships
 </div>
 
-<p>
-universityrelations@kida.org
+<p id="contact-partnerships">
++82 10-6863-2898
 </p>
+
+</div>
 
 </div>
 
@@ -948,7 +997,211 @@ font-size:0.95rem;
 
 </footer>
 
-<script type="module" src="firebase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init("pi6GZpvdQrC5nATyo");
+</script>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+getFirestore,
+doc,
+getDoc,
+collection,
+addDoc,
+serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAoYu9k8QKVhTalNJgYgFwztmtKPN1mMio",
+authDomain: "kida-835b0.firebaseapp.com",
+projectId: "kida-835b0",
+storageBucket: "kida-835b0.firebasestorage.app",
+messagingSenderId: "886653080955",
+appId: "1:886653080955:web:2de5128e099e4afd6f99de"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+
+
+
+/* =========================
+LOAD CONTACT SETTINGS
+========================= */
+
+async function loadContactSettings(){
+
+const snap =
+await getDoc(doc(db, "settings", "contact"));
+
+if(!snap.exists()) return;
+
+const data = snap.data();
+
+/* RIGHT SIDE INFO */
+
+document.getElementById("contact-email").innerText =
+data.publicEmail || "";
+
+document.getElementById("contact-location").innerText =
+data.location || "";
+
+document.getElementById("contact-organization").innerText =
+data.organization || "";
+
+document.getElementById("contact-partnerships").innerText =
+data.partnerships || "";
+
+}
+
+loadContactSettings();
+
+
+
+
+
+/* =========================
+SEND CONTACT MESSAGE
+========================= */
+
+/* =========================
+ANONYMOUS TOGGLE
+========================= */
+
+const anonymousToggle =
+document.getElementById("anonymous-toggle");
+
+const nameInput =
+document.getElementById("sender-name");
+
+const emailInput =
+document.getElementById("sender-email");
+
+anonymousToggle.addEventListener("change", ()=>{
+
+if(anonymousToggle.checked){
+
+nameInput.required = false;
+emailInput.required = false;
+
+nameInput.disabled = true;
+emailInput.disabled = true;
+
+nameInput.value = "Anonymous";
+emailInput.value = "anonymous@kida.com";
+
+}else{
+
+nameInput.required = true;
+emailInput.required = true;
+
+nameInput.disabled = false;
+emailInput.disabled = false;
+
+nameInput.value = "";
+emailInput.value = "";
+
+}
+
+});
+
+document
+.getElementById("contact-form")
+.addEventListener("submit", async (e) => {
+
+e.preventDefault();
+
+const submitBtn =
+document.querySelector(".btn-kida");
+
+submitBtn.disabled = true;
+submitBtn.innerText = "Sending...";
+
+try {
+
+const name =
+document.getElementById("sender-name").value;
+
+const email =
+document.getElementById("sender-email").value;
+
+const subject =
+document.getElementById("message-subject").value;
+
+const message =
+document.getElementById("message-body").value;
+
+
+/* SAVE TO FIREBASE */
+
+await addDoc(collection(db, "messages"), {
+
+name,
+email,
+subject,
+message,
+
+createdAt: serverTimestamp()
+
+});
+
+
+/* GET CURRENT CONTACT SETTINGS */
+
+const settingsSnap =
+await getDoc(doc(db, "settings", "contact"));
+
+const settingsData =
+settingsSnap.data();
+
+
+/* SEND EMAIL USING EMAILJS */
+
+await emailjs.send(
+"service_ijtgfj8",
+"template_f6anl5r",
+{
+from_name: name,
+from_email: email,
+subject: subject,
+message: message,
+to_email: settingsData.receiverEmail
+}
+);
+
+
+alert("Message sent successfully.");
+
+document
+.getElementById("contact-form")
+.reset();
+
+} catch(err){
+
+console.error(err);
+
+alert("Failed to send message.");
+
+}
+
+submitBtn.disabled = false;
+submitBtn.innerText = "Send Message";
+
+});
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
