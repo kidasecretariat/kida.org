@@ -1050,26 +1050,81 @@ if(!snap.exists()) return;
 
 const data = snap.data();
 
-/* RIGHT SIDE INFO */
+/* EMAIL */
+
+const emailItem =
+document.getElementById("contact-email").closest(".info-item");
+
+if(data.publicEmail && data.publicEmail.trim() !== ""){
 
 document.getElementById("contact-email").innerText =
-data.publicEmail || "";
+data.publicEmail;
+
+emailItem.style.display = "block";
+
+}else{
+
+emailItem.style.display = "none";
+
+}
+
+/* LOCATION */
+
+const locationItem =
+document.getElementById("contact-location").closest(".info-item");
+
+if(data.location && data.location.trim() !== ""){
 
 document.getElementById("contact-location").innerText =
-data.location || "";
+data.location;
+
+locationItem.style.display = "block";
+
+}else{
+
+locationItem.style.display = "none";
+
+}
+
+/* ORGANIZATION */
+
+const organizationItem =
+document.getElementById("contact-organization").closest(".info-item");
+
+if(data.organization && data.organization.trim() !== ""){
 
 document.getElementById("contact-organization").innerText =
-data.organization || "";
+data.organization;
+
+organizationItem.style.display = "block";
+
+}else{
+
+organizationItem.style.display = "none";
+
+}
+
+/* PARTNERSHIPS */
+
+const partnershipsItem =
+document.getElementById("contact-partnerships").closest(".info-item");
+
+if(data.partnerships && data.partnerships.trim() !== ""){
 
 document.getElementById("contact-partnerships").innerText =
-data.partnerships || "";
+data.partnerships;
+
+partnershipsItem.style.display = "block";
+
+}else{
+
+partnershipsItem.style.display = "none";
+
+}
 
 }
 
 loadContactSettings();
-
-
-
 
 
 /* =========================
