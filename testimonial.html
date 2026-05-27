@@ -563,168 +563,9 @@ Photos from KIDA tournaments and events.
 
 </div>
 
-<div class="row g-4">
-
-<!-- CARD 1 -->
-
-<div class="col-lg-4">
-
-<div class="gallery-card">
-
-<img src="img/carousel-2.jpg">
-
-<div class="overlay">
-
-<h3>
-National Championships
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 2 -->
-
-<div class="col-lg-4">
-
-<div class="gallery-card">
-
-<img src="img/carousel-3.jpg">
-
-<div class="overlay">
-
-<h3>
-Workshops
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 3 -->
-
-<div class="col-lg-4">
-
-<div class="gallery-card">
-
-<img src="img/about.jpg">
-
-<div class="overlay">
-
-<h3>
-North East Asian Debate Championships
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 4 -->
-
-<div class="col-lg-6">
-
-<div class="gallery-card">
-
-<img src="img/carousel-4jpg">
-
-<div class="overlay">
-
-<h3>
-United Asian Debate Championships
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 5 -->
-
-<div class="col-lg-6">
-
-<div class="gallery-card">
-
-<img src="img/carousel-5jpg">
-
-<div class="overlay">
-
-<h3>
-Worlds University Debate Championships
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 6 -->
-
-<div class="col-lg-4">
-
-<div class="gallery-card">
-
-<img src="img/carousel-1.jpg">
-
-<div class="overlay">
-
-<h3>
-Rookie Tournaments
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 7 -->
-
-<div class="col-lg-4">
-
-<div class="gallery-card">
-
-<img src="img/carousel-6.jpg">
-
-<div class="overlay">
-
-<h3>
-Australs
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD 8 -->
-
-<div class="col-lg-4">
-
-<div class="gallery-card">
-
-<img src="img/carousel-7.jpg">
-
-<div class="overlay">
-
-<h3>
-KIDA Open
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
+<div
+id="communityGallery"
+class="row g-4">
 </div>
 
 </div>
@@ -898,7 +739,87 @@ font-size:0.95rem;
 
 </footer>
 
-<script type="module" src="firebase-config.js"></script>
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAoYu9k8QKVhTalNJgYgFwztmtKPN1mMio",
+authDomain: "kida-835b0.firebaseapp.com",
+projectId: "kida-835b0",
+storageBucket: "kida-835b0.firebasestorage.app",
+messagingSenderId: "886653080955",
+appId: "1:886653080955:web:2de5128e099e4afd6f99de"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+async function loadCommunity(){
+
+const gallery =
+document.getElementById("communityGallery");
+
+gallery.innerHTML = "";
+
+const snapshot =
+await getDocs(collection(db,"community"));
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+gallery.innerHTML += `
+
+<div class="col-lg-4 col-md-6">
+
+<div class="gallery-card">
+
+<img src="${data.image}" alt="${data.title}">
+
+<div class="overlay">
+
+<div>
+
+<h3>${data.title || ""}</h3>
+
+<p style="
+margin-top:10px;
+font-size:0.95rem;
+line-height:1.7;
+margin-bottom:0;
+">
+${data.caption || ""}
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadCommunity();
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
