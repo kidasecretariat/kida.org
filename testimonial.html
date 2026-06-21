@@ -747,7 +747,9 @@ from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import {
 getFirestore,
 collection,
-getDocs
+getDocs,
+query,
+orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
@@ -773,8 +775,12 @@ document.getElementById("communityGallery");
 
 gallery.innerHTML = "";
 
-const snapshot =
-await getDocs(collection(db,"community"));
+const communityQuery = query(
+collection(db, "community"),
+orderBy("createdAt", "desc")
+);
+
+const snapshot = await getDocs(communityQuery);
 
 snapshot.forEach((docSnap)=>{
 
